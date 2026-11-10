@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qualidade Assertiva de Leads · Kempinski Laje de Pedra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+:root {
+  --color-fg: #14213D; --color-fg-muted: #5B6472; --color-bg: #F7F5F0; --color-panel: #FFFFFF; --color-border-line: #E4DFD4;
+  --color-ok: #1E7B45; --color-warn: #B7791F; --color-bad: #B42318;
+  --font-anthropic-sans: 'Inter', Arial, sans-serif; --font-anthropic-serif: 'Cormorant Garamond', Georgia, serif;
+  --cds-font-size-caption: 13px; --cds-font-size-body: 15px; --cds-font-size-heading: 19px; --cds-font-size-title: 30px;
+  --cds-font-weight-medium: 600;
+  --cds-gap-xs: 4px; --cds-gap-sm: 8px; --cds-gap-md: 14px; --cds-gap-lg: 20px; --cds-gap-xl: 30px;
+  --cds-pad-xs: 4px; --cds-pad-sm: 8px; --cds-pad-md: 12px; --cds-pad-lg: 18px; --cds-pad-xl: 28px;
+  --cds-radius: 10px;
+  --cds-chart-muted: #B9C4D4; --cds-chart-status-critical: #C2412D; --cds-chart-grid: #ECE8DF; --cds-chart-axis: #C9C3B6; --cds-chart-reference: #8A8478;
+  --cds-text-secondary: #5B6472; --cds-surface-popover: #FFFFFF; --cds-border: #E4DFD4; --cds-shadow-popover: 0 6px 24px rgba(11,37,69,.14);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fg: #ECEFF4; --color-fg-muted: #A7B0BE; --color-bg: #0E1624; --color-panel: #151F31; --color-border-line: #26324A;
+    --color-ok: #5FC98A; --color-warn: #E3B35A; --color-bad: #F08A7E;
+    --cds-chart-muted: #4A5A75; --cds-chart-status-critical: #E0705F; --cds-chart-grid: #222D42; --cds-chart-axis: #3A4760; --cds-chart-reference: #8A93A3;
+    --cds-text-secondary: #A7B0BE; --cds-surface-popover: #1B263B; --cds-border: #2E3B55; --cds-shadow-popover: 0 6px 24px rgba(0,0,0,.45);
+    color-scheme: dark;
+  }
+}
+[hidden] { display: none !important; }
+html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); font-size: 15px; }
+#dash-root { max-width: 1240px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px)); box-sizing: border-box; }
+.dash-select { appearance: none; font: inherit; font-size: 14px; padding: 8px 34px 8px 12px; border-radius: 8px; border: 1px solid var(--color-border-line); background-color: var(--color-panel); color: var(--color-fg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C9A15A' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; cursor: pointer; }
+.dash-skeleton { position: relative; color: transparent !important; }
+.dash-skeleton:empty { min-height: 1em; background: color-mix(in srgb, var(--color-fg) 6%, transparent); border-radius: 6px; }
+.qa-foot { margin-top: 28px; font-size: 12px; color: var(--color-fg-muted); text-align: center; }
+</style>
+<script>
+// Mini runtime: carrega os CSV, calcula e desenha (substitui o motor do dashboard do Claude)
+window.dash = (function () {
+  const sources = {leads: 'data/leads.csv', custos: 'data/custos.csv'};
+  const calcs = [], draws = [], onDataFns = [], state = {};
+  const defaults = {semana: null};
+  let params = {};
+  const read = () => { const p = new URLSearchParams(location.search); const o = {}; p.forEach((v, k) => { o[k] = v; }); return o; };
+  params = Object.assign({}, defaults, read());
+  let scheduled = false;
+  const render = () => {
+    scheduled = false;
+    onDataFns.forEach((fn) => { try { fn(); } catch (e) { console.error(e); } });
+    draws.forEach(([name, fn]) => {
+      document.querySelectorAll('[data-draw="' + name + '"]').forEach((el) => {
+        if (el.closest('[hidden]')) return;
+        try { fn(el); } catch (e) { console.error(name, e); }
+      });
+    });
+  };
+  const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(render); } };
+  const api = {
+    colors: ['var(--qa-gold)', 'var(--qa-blue)'],
+    calc(id, o) { calcs.push([id, o]); },
+    loader() {},
+    data(id) { return state[id] || {status: 'loading', data: calcs.some((c) => c[0] === id) ? null : []}; },
+    draw(name, fn) { draws.push([name, fn]); },
+    onData(fn) { onDataFns.push(fn); },
+    params() { return params; },
+    setParams(p) { Object.assign(params, p); const q = new URLSearchParams(); Object.entries(params).forEach(([k, v]) => { if (v != null && v !== '') q.set(k, v); }); history.replaceState(null, '', '?' + q.toString() + location.hash); schedule(); },
+    resetParams() { params = Object.assign({}, defaults); schedule(); },
+    setLink(name) { history.replaceState(null, '', location.search + (name ? '#' + name : '')); },
+    refresh() {},
+    _setDefault(k, v) { if (params[k] == null || params[k] === '') params[k] = v; },
+    _start: async () => {
+      new MutationObserver(schedule).observe(document.getElementById('dash-root'), {attributes: true, subtree: true, attributeFilter: ['hidden']});
+      window.addEventListener('resize', schedule);
+      try {
+        for (const [id, url] of Object.entries(sources)) {
+          const rows = await d3.csv(url + '?v=' + Date.now());
+          state[id] = {status: 'ok', data: rows};
+        }
+        for (const [id, o] of calcs) {
+          state[id] = {status: 'ok', data: o.fn(...o.inputs.map((i) => (state[i] ? state[i].data : [])))};
+        }
+        const k = state.kpi_semana && state.kpi_semana.data.filter((r) => r.semana !== 'todas');
+        if (k && k.length) api._setDefault('semana', k[k.length - 1].semana);
+      } catch (e) {
+        console.error(e);
+        Object.keys(sources).concat(calcs.map((c) => c[0])).forEach((id) => { state[id] = {status: 'error', data: []}; });
+      }
+      render();
+    }
+  };
+  return api;
+})();
+</script>
+</head>
+<body>
+<div id="dash-root">
+<meta name="dash-one-writer">
+<style>
+.qa {
+  /* Paleta Kempinski Laje de Pedra: azul-marinho e dourado; faixas marinho valem nos dois temas */
+  --qa-navy: #0B2545; --qa-navy-2: #16345E; --qa-gold: #C9A15A; --qa-gold-light: #E6CC97;
+  --qa-blue: #4F7DAE; --qa-blue-strong: #1C4E8A; --qa-blue-soft: #9FB5CF; --qa-on-navy: #F4EFE6; --qa-on-navy-muted: #B9C4D4;
+  display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg);
+}
+.qa-head { display: flex; flex-wrap: wrap; gap: var(--cds-gap-lg); align-items: flex-end; justify-content: space-between;
+  background: linear-gradient(135deg, var(--qa-navy) 0%, var(--qa-navy-2) 100%); color: var(--qa-on-navy);
+  border-radius: var(--cds-radius); padding: var(--cds-pad-xl) var(--cds-pad-xl) var(--cds-pad-lg); }
+.qa-head-text { min-width: 0; flex: 1 1 420px; }
+.qa-eyebrow { margin: 0; font-size: var(--cds-font-size-caption); color: var(--qa-gold); text-transform: uppercase; letter-spacing: .08em; font-weight: var(--cds-font-weight-medium); }
+.qa-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.25); line-height: 1.1; margin: var(--cds-gap-sm) 0 0; text-wrap: balance; color: var(--qa-on-navy); }
+.qa-title::after { content: ""; display: block; width: 56px; height: 2px; background: var(--qa-gold); margin-top: var(--cds-gap-md); }
+.qa-lede { margin: var(--cds-gap-md) 0 0; font-size: var(--cds-font-size-body); color: var(--qa-on-navy-muted); max-width: 72ch; line-height: 1.55; }
+.qa-lede b { color: var(--qa-gold-light); font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; }
+.qa-filter { display: flex; flex-direction: column; gap: var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--qa-on-navy-muted); text-transform: uppercase; letter-spacing: .06em; }
+.qa-filter .dash-select { background-color: var(--qa-on-navy); color: var(--qa-navy); border-color: var(--qa-gold); text-transform: none; letter-spacing: 0; min-width: 200px; }
+.qa-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--cds-gap-md); }
+.qa-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-top: 3px solid var(--qa-gold); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+.qa-tile-label { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .05em; }
+.qa-tile-value { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: 2.6rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.qa-delta { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+.qa-delta .good { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
+.qa-delta .bad { color: var(--color-bad); font-weight: var(--cds-font-weight-medium); }
+.qa-tile.qa-feature { background: var(--qa-navy); border-color: var(--qa-navy); border-top-color: var(--qa-gold); }
+.qa-feature .qa-tile-label { color: var(--qa-gold); }
+.qa-feature .qa-tile-value { color: var(--qa-on-navy); }
+.qa-feature .qa-delta { color: var(--qa-on-navy-muted); }
+.qa-feature .qa-delta .good { color: #8FD3A6; }
+.qa-feature .qa-delta .bad { color: #F2A3A3; }
+.qa-section { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
+.qa-h2 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-heading) * 1.2); margin: 0; display: flex; align-items: center; gap: var(--cds-gap-sm); }
+.qa-h2::before { content: ""; width: 18px; height: 2px; background: var(--qa-gold); flex: none; }
+.qa-h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0; }
+.qa-sub { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.45; }
+.qa-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--cds-gap-lg); }
+.qa-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
+.qa-chart { position: relative; min-height: 200px; }
+.qa-chart svg { display: block; width: 100%; overflow: visible; }
+.qa-chart text { fill: var(--cds-text-secondary); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+.qa-chart text.qa-val { fill: var(--color-fg); font-variant-numeric: tabular-nums; }
+.qa-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: 8px 10px; font-size: var(--cds-font-size-caption); color: var(--color-fg); white-space: pre-line; max-width: 260px; z-index: 2; line-height: 1.45; }
+.qa-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.qa-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.qa-sw { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.qa-sw-main, .qa-sw-alto { background: var(--qa-gold); }
+.qa-sw-muted { background: var(--qa-blue-soft); }
+.qa-sw-medio { background: var(--qa-blue); }
+.qa-sw-baixo { background: var(--cds-chart-status-critical); }
+.qa-card { box-shadow: 0 1px 2px color-mix(in srgb, var(--qa-navy) 8%, transparent); }
+.qa-h3 { color: var(--color-fg); }
+.qa-tablewrap { overflow-x: auto; }
+.qa-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.qa-table th, .qa-table td { padding: 8px 10px; border-bottom: 1px solid var(--color-border-line); text-align: right; white-space: nowrap; }
+.qa-table thead th { background: var(--qa-navy); color: var(--qa-on-navy); font-weight: var(--cds-font-weight-medium); border-bottom: 2px solid var(--qa-gold); }
+.qa-table thead th:first-child { border-top-left-radius: 6px; }
+.qa-table thead th:last-child { border-top-right-radius: 6px; }
+.qa-table tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--qa-blue) 6%, transparent); }
+.qa-table tbody tr:hover td { background: color-mix(in srgb, var(--qa-gold) 14%, transparent); }
+.qa-table .txt { text-align: left; }
+.qa-pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: var(--cds-font-size-caption); border: 1px solid currentColor; }
+.qa-pill.alto { color: var(--color-ok); }
+.qa-pill.baixo { color: var(--color-bad); }
+.qa-notes summary { cursor: pointer; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.qa-notes ul { margin: var(--cds-gap-sm) 0 0; padding-left: 1.2em; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.55; display: flex; flex-direction: column; gap: 4px; }
+
+.qa-tabs { display: flex; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); flex-wrap: wrap; }
+.qa-tab { appearance: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg-muted); cursor: pointer; margin-bottom: -1px; }
+.qa-tab:hover { color: var(--color-fg); }
+.qa-tab:focus-visible { outline: 2px solid var(--qa-gold); outline-offset: 2px; border-radius: 4px; }
+.qa-tab.is-active { color: var(--color-fg); border-bottom-color: var(--qa-gold); font-weight: var(--cds-font-weight-medium); }
+.qa-panel { display: flex; flex-direction: column; gap: var(--cds-gap-xl); }
+.qa-note { margin: 0; padding: var(--cds-pad-md) var(--cds-pad-lg); border-radius: var(--cds-radius); background: color-mix(in srgb, var(--qa-gold) 14%, transparent); font-size: var(--cds-font-size-body); }
+.qa-vs { margin: 0; font-size: var(--cds-font-size-body); color: var(--color-fg-muted); }
+.qa-vs b { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+.qa-ctable td.qa-cur, .qa-ctable th.qa-cur { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+.qa-ctable td.good { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
+.qa-ctable td.bad { color: var(--color-bad); font-weight: var(--cds-font-weight-medium); }
+.qa-kcomp td span.good { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
+.qa-kcomp td span.bad { color: var(--color-bad); font-weight: var(--cds-font-weight-medium); }
+.qa-moves { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+.qa-moves li { display: flex; justify-content: space-between; gap: var(--cds-gap-md); padding-bottom: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); }
+.qa-moves li span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.qa-moves li span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qa-moves .good { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
+.qa-moves .bad { color: var(--color-bad); font-weight: var(--cds-font-weight-medium); }
+.qa-compbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--cds-gap-md); padding: var(--cds-pad-lg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-left: 3px solid var(--qa-gold); border-radius: var(--cds-radius); }
+.qa-cfilter { display: flex; flex-direction: column; gap: var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em; }
+.qa-cfilter .dash-select { min-width: 190px; text-transform: none; letter-spacing: 0; }
+.qa-vsword { font-size: var(--cds-font-size-body); color: var(--color-fg-muted); padding-bottom: 8px; }
+.qa-def summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.qa-def summary::-webkit-details-marker { display: none; }
+.qa-def summary::after { content: "i"; display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; border: 1px solid currentColor; font-size: 10px; font-style: italic; font-weight: 600; text-transform: none; opacity: .7; flex: none; }
+.qa-def summary:hover, .qa-def[open] summary { color: var(--color-fg); }
+.qa-def summary:focus-visible { outline: 2px solid var(--qa-gold); outline-offset: 2px; border-radius: 4px; }
+.qa-def-text { margin: var(--cds-gap-xs) 0 var(--cds-gap-xs); font-size: var(--cds-font-size-caption); line-height: 1.45; color: var(--color-fg-muted); text-transform: none; letter-spacing: 0; }
+.qa-feature .qa-def summary:hover, .qa-feature .qa-def[open] summary { color: var(--qa-gold-light); }
+.qa-feature .qa-def-text { color: var(--qa-on-navy-muted); }
+[data-dash-source-state=refreshing] { opacity: .5; }
+</style>
+
+<div class="qa">
+  <header class="qa-head" id="topo">
+    <div class="qa-head-text">
+      <p class="qa-eyebrow">Kempinski Laje de Pedra · Comercial e Marketing · Canal Online - Empresa</p>
+      <h1 class="qa-title">Qualidade Assertiva de Leads</h1>
+      <p class="qa-lede" data-read lang="pt-BR">Em <b data-draw="wlabel">—</b>, <b data-draw="kv" data-source="kpi_semana" data-field="pct_qualificados" data-fmt="pct">—</b> dos <b data-draw="kv" data-source="kpi_semana" data-field="leads">—</b> leads foram qualificados<span class="qa-ifweek">, contra <b data-draw="kv" data-source="kpi_semana" data-field="ant_pct_qualificados" data-fmt="pct">—</b> na semana anterior</span>. O público com melhor qualificação, entre os que tiveram ao menos <b data-draw="minleads">—</b> leads, foi <b data-draw="bestpub" data-source="por_publico" data-field="publico">—</b>, com <b data-draw="bestpct" data-source="por_publico" data-field="pct_qualificados">—</b>.</p>
+    </div>
+    <label class="qa-filter" for="qa-semana">Período
+      <select id="qa-semana" class="dash-select" data-draw="semana" aria-label="Semana" data-source="kpi_semana"></select>
+    </label>
+  </header>
+
+  <nav class="qa-tabs" role="tablist" aria-label="Abas do dashboard">
+    <button type="button" class="qa-tab is-active" role="tab" id="aba-visao" data-tab="visao" aria-selected="true">Visão geral</button>
+    <button type="button" class="qa-tab" role="tab" id="aba-comparacao" data-tab="comparacao" aria-selected="false">Comparação da semana</button>
+    <button type="button" class="qa-tab" role="tab" id="aba-custos" data-tab="custos" aria-selected="false">Custos</button>
+  </nav>
+
+  <section class="qa-panel" id="visao" role="tabpanel" aria-labelledby="aba-visao">
+
+  <section class="qa-tiles" id="indicadores" aria-label="Indicadores do período">
+    <div class="qa-tile" id="tile-leads">
+      <details class="qa-def"><summary class="qa-tile-label">Leads recebidos</summary><p class="qa-def-text">Leads do canal Online - Empresa criados na semana, segundo o relatório Qualidade Assertiva do CRM.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="kv" data-source="kpi_semana" data-field="leads">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="kv" data-source="kpi_semana" data-field="var_leads" data-fmt="rel" data-good="up">—</span> vs. <span data-draw="kv" data-source="kpi_semana" data-field="ant_leads">—</span></p>
+    </div>
+    <div class="qa-tile" id="tile-qualificados">
+      <details class="qa-def"><summary class="qa-tile-label">Qualificados</summary><p class="qa-def-text">Leads que o corretor classificou como "Qualificado" na Qualidade Assertiva do CRM: têm o perfil de cliente que buscamos.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="kv" data-source="kpi_semana" data-field="qualificados">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="kv" data-source="kpi_semana" data-field="var_qualificados" data-fmt="rel" data-good="up">—</span> vs. <span data-draw="kv" data-source="kpi_semana" data-field="ant_qualificados">—</span></p>
+    </div>
+    <div class="qa-tile qa-feature" id="tile-pct">
+      <details class="qa-def"><summary class="qa-tile-label">% Qualificação</summary><p class="qa-def-text">Qualificados ÷ leads recebidos. Mostra quantos leads de cada 100 têm perfil.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="kv" data-source="kpi_semana" data-field="pct_qualificados" data-fmt="pct">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="kv" data-source="kpi_semana" data-field="var_pct_qualificados" data-fmt="pp" data-good="up">—</span> vs. <span data-draw="kv" data-source="kpi_semana" data-field="ant_pct_qualificados" data-fmt="pct">—</span></p>
+    </div>
+    <div class="qa-tile" id="tile-descartados">
+      <details class="qa-def"><summary class="qa-tile-label">Descartados</summary><p class="qa-def-text">Leads marcados como descartados no CRM, sempre com um motivo (sem perfil, contato inválido, nunca interagiu etc.).</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="kv" data-source="kpi_semana" data-field="descartados">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="kv" data-source="kpi_semana" data-field="var_descartados" data-fmt="rel" data-good="down">—</span> vs. <span data-draw="kv" data-source="kpi_semana" data-field="ant_descartados">—</span></p>
+    </div>
+    <div class="qa-tile" id="tile-avancados">
+      <details class="qa-def"><summary class="qa-tile-label">Avançados</summary><p class="qa-def-text">Leads que chegaram a uma conversa comercial: etapa atual Interessado ou Reunião realizada.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="kv" data-source="kpi_semana" data-field="avancados">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="kv" data-source="kpi_semana" data-field="var_avancados" data-fmt="rel" data-good="up">—</span> vs. <span data-draw="kv" data-source="kpi_semana" data-field="ant_avancados">—</span></p>
+    </div>
+    <div class="qa-tile" id="tile-reunioes">
+      <details class="qa-def"><summary class="qa-tile-label">Reuniões realizadas</summary><p class="qa-def-text">Leads cuja etapa atual no CRM é Reunião realizada.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="kv" data-source="kpi_semana" data-field="reunioes">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="kv" data-source="kpi_semana" data-field="var_reunioes" data-fmt="rel" data-good="up">—</span> vs. <span data-draw="kv" data-source="kpi_semana" data-field="ant_reunioes">—</span></p>
+    </div>
+  </section>
+  <p class="qa-sub">Clique no nome de um indicador para ver o que ele significa. As variações comparam com a semana anterior.</p>
+
+  <section class="qa-section" id="tendencia">
+    <h2 class="qa-h2">Leads e qualificados por semana</h2>
+    <div class="qa-legend"><span><i class="qa-sw qa-sw-muted"></i>Leads</span><span><i class="qa-sw qa-sw-main"></i>Qualificados</span></div>
+    <div class="qa-card">
+      <div class="qa-chart dash-skeleton" id="grafico-semanas" data-draw="trend" data-source="kpi_semana"></div>
+    </div>
+  </section>
+
+  <section class="qa-section" id="campanhas">
+    <h2 class="qa-h2">Campanhas e públicos</h2>
+    <div class="qa-legend"><span><i class="qa-sw qa-sw-alto"></i>Qualificação de <b data-draw="limalto">—</b> ou mais</span><span><i class="qa-sw qa-sw-medio"></i>Intermediária</span><span><i class="qa-sw qa-sw-baixo"></i>Abaixo de <b data-draw="limbaixo">—</b></span></div>
+    <div class="qa-grid2">
+      <div class="qa-card" id="card-campanhas">
+        <h3 class="qa-h3">% de qualificação por campanha</h3>
+        <div class="qa-chart dash-skeleton" id="grafico-campanhas" data-draw="hcamp" data-source="por_campanha"></div>
+      </div>
+      <div class="qa-card" id="card-motivos">
+        <h3 class="qa-h3">Motivos de descarte</h3>
+        <div class="qa-chart dash-skeleton" id="grafico-motivos" data-draw="hmot" data-source="motivos"></div>
+      </div>
+    </div>
+    <div class="qa-card" id="card-publicos">
+      <h3 class="qa-h3">Resultado por público</h3>
+      <p class="qa-sub">Sinal: <span class="qa-pill alto">Alto</span> com <b data-draw="limalto">—</b> ou mais de qualificação · <span class="qa-pill baixo">Baixo</span> abaixo de <b data-draw="limbaixo">—</b>.</p>
+      <div class="qa-tablewrap">
+        <table class="qa-table" id="tabela-publicos" data-source="por_publico" data-row-key="semana,publico">
+          <thead><tr><th class="txt" data-field="campanha">Campanha</th><th class="txt" data-field="publico">Público</th><th data-field="leads">Leads</th><th data-field="qualificados">Qualificados</th><th data-field="pct_qualificados">% Qualif.</th><th class="txt">Sinal</th><th data-field="descartados">Descartados</th><th data-field="avancados">Avançados</th><th data-field="reunioes">Reuniões</th></tr></thead>
+          <tbody data-draw="tpub"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="qa-section" id="regiao">
+    <h2 class="qa-h2">Região do cliente pelo DDD</h2>
+    <p class="qa-sub">A região vem do DDD do telefone do lead, que indica a origem da linha e nem sempre onde a pessoa mora.</p>
+    <div class="qa-legend"><span><i class="qa-sw qa-sw-alto"></i>Qualificação de <b data-draw="limalto">—</b> ou mais</span><span><i class="qa-sw qa-sw-medio"></i>Intermediária</span><span><i class="qa-sw qa-sw-baixo"></i>Abaixo de <b data-draw="limbaixo">—</b></span></div>
+    <div class="qa-grid2">
+      <div class="qa-card" id="card-regiao">
+        <h3 class="qa-h3">% de qualificação por região</h3>
+        <div class="qa-chart dash-skeleton" id="grafico-regiao" data-draw="hreg" data-source="por_regiao"></div>
+      </div>
+      <div class="qa-card" id="card-aderencia">
+        <h3 class="qa-h3">Aderência geográfica das campanhas regionais</h3>
+        <p class="qa-sub">Quantos leads de cada campanha têm DDD do próprio estado.</p>
+        <div class="qa-tablewrap">
+          <table class="qa-table" id="tabela-aderencia" data-source="aderencia" data-row-key="semana,campanha">
+            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th data-field="leads">Leads</th><th data-field="leads_estado">DDD do estado</th><th data-field="pct_aderencia">% aderência</th><th data-field="qualificados_estado">Qualificados do estado</th></tr></thead>
+            <tbody data-draw="tade"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qa-section" id="corretores">
+    <h2 class="qa-h2">Corretores</h2>
+    <div class="qa-card">
+      <div class="qa-tablewrap">
+        <table class="qa-table" id="tabela-corretores" data-source="por_corretor" data-row-key="semana,corretor">
+          <thead><tr><th class="txt" data-field="corretor">Corretor</th><th data-field="leads">Leads</th><th data-field="qualificados">Qualificados</th><th data-field="pct_qualificados">% Qualif.</th><th data-field="descartados">Descartados</th><th data-field="pct_descartados">% Descarte</th><th data-field="avancados">Avançados</th><th data-field="reunioes">Reuniões</th></tr></thead>
+          <tbody data-draw="tcor"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <section class="qa-panel" id="comparacao" role="tabpanel" aria-labelledby="aba-comparacao" hidden>
+    <div class="qa-compbar" id="filtro-comparacao">
+      <label class="qa-cfilter" for="qa-comp-a">Semana A
+        <select id="qa-comp-a" class="dash-select" data-draw="compa" aria-label="Semana A" data-source="kpi_semana"></select>
+      </label>
+      <span class="qa-vsword">comparada com</span>
+      <label class="qa-cfilter" for="qa-comp-b">Semana B
+        <select id="qa-comp-b" class="dash-select" data-draw="compb" aria-label="Semana B" data-source="kpi_semana"></select>
+      </label>
+    </div>
+    <p class="qa-note qa-ifsame">Escolha duas semanas diferentes para comparar.</p>
+    <div class="qa-panel qa-ifcomp">
+      <p class="qa-vs">Variações da <b data-draw="wb">—</b> em relação à <b data-draw="wa">—</b>.</p>
+
+      <section class="qa-section" id="comp-indicadores">
+        <h2 class="qa-h2">Indicadores</h2>
+        <div class="qa-card">
+          <div class="qa-tablewrap">
+            <table class="qa-table qa-ctable qa-kcomp" id="tabela-comp-indicadores">
+              <thead><tr><th class="txt">Indicador</th><th>Semana A</th><th class="qa-cur">Semana B</th><th>Variação</th></tr></thead>
+              <tbody>
+                <tr><td class="txt">Leads recebidos</td><td><span data-draw="kc" data-source="comp_kpi" data-field="leads_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="leads_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_leads" data-fmt="rel" data-good="up">—</span></td></tr>
+                <tr><td class="txt">Qualificados</td><td><span data-draw="kc" data-source="comp_kpi" data-field="qualificados_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="qualificados_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_qualificados" data-fmt="rel" data-good="up">—</span></td></tr>
+                <tr><td class="txt">% Qualificação</td><td><span data-draw="kc" data-source="comp_kpi" data-field="pct_a" data-fmt="pct">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="pct_b" data-fmt="pct">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_pct" data-fmt="pp" data-good="up">—</span></td></tr>
+                <tr><td class="txt">Descartados</td><td><span data-draw="kc" data-source="comp_kpi" data-field="descartados_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="descartados_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_descartados" data-fmt="rel" data-good="down">—</span></td></tr>
+                <tr><td class="txt">Avançados</td><td><span data-draw="kc" data-source="comp_kpi" data-field="avancados_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="avancados_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_avancados" data-fmt="rel" data-good="up">—</span></td></tr>
+                <tr><td class="txt">Reuniões realizadas</td><td><span data-draw="kc" data-source="comp_kpi" data-field="reunioes_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="reunioes_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_reunioes" data-fmt="rel" data-good="up">—</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="qa-section" id="comp-campanhas">
+        <h2 class="qa-h2">Qualificação por campanha</h2>
+        <div class="qa-legend"><span><i class="qa-sw qa-sw-muted"></i>Semana A</span><span><i class="qa-sw qa-sw-main"></i>Semana B</span></div>
+        <div class="qa-card">
+          <div class="qa-chart dash-skeleton" id="grafico-comp-campanhas" data-draw="dumb" data-source="comp_campanha"></div>
+        </div>
+        <div class="qa-card">
+        <div class="qa-tablewrap">
+          <table class="qa-table qa-ctable" id="tabela-comp-campanhas" data-source="comp_campanha" data-row-key="semana_a,semana_b,campanha">
+            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <tbody data-draw="comp_campanha"></tbody>
+          </table>
+        </div>
+        </div>
+      </section>
+
+      <section class="qa-section" id="comp-publicos">
+        <h2 class="qa-h2">Públicos que mais mudaram</h2>
+        <p class="qa-sub">Entre os públicos com ao menos <b data-draw="mincomp">—</b> leads nas duas semanas, variação da qualificação em pontos percentuais.</p>
+        <div class="qa-grid2">
+          <div class="qa-card" id="card-altas"><h3 class="qa-h3">Maiores altas</h3><ul class="qa-moves" data-draw="altas" data-source="comp_publico"></ul></div>
+          <div class="qa-card" id="card-quedas"><h3 class="qa-h3">Maiores quedas</h3><ul class="qa-moves" data-draw="quedas" data-source="comp_publico"></ul></div>
+        </div>
+        <div class="qa-card">
+        <div class="qa-tablewrap">
+          <table class="qa-table qa-ctable" id="tabela-comp-publicos" data-source="comp_publico" data-row-key="semana_a,semana_b,publico">
+            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th class="txt" data-field="publico">Público</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <tbody data-draw="comp_publico"></tbody>
+          </table>
+        </div>
+        </div>
+      </section>
+
+      <section class="qa-section" id="comp-regioes">
+        <h2 class="qa-h2">Regiões (DDD)</h2>
+        <div class="qa-card">
+        <div class="qa-tablewrap">
+          <table class="qa-table qa-ctable" id="tabela-comp-regioes" data-source="comp_regiao" data-row-key="semana_a,semana_b,regiao">
+            <thead><tr><th class="txt" data-field="regiao">Região</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <tbody data-draw="comp_regiao"></tbody>
+          </table>
+        </div>
+        </div>
+      </section>
+
+      <section class="qa-section" id="comp-corretores">
+        <h2 class="qa-h2">Corretores</h2>
+        <div class="qa-card">
+        <div class="qa-tablewrap">
+          <table class="qa-table qa-ctable" id="tabela-comp-corretores" data-source="comp_corretor" data-row-key="semana_a,semana_b,corretor">
+            <thead><tr><th class="txt" data-field="corretor">Corretor</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <tbody data-draw="comp_corretor"></tbody>
+          </table>
+        </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="qa-panel" id="custos" role="tabpanel" aria-labelledby="aba-custos" hidden>
+    <p class="qa-vs">Investimento e custos do canal Online em <b data-draw="cklabel">—</b>.</p>
+    <section class="qa-tiles" id="custos-indicadores" aria-label="Indicadores de custo">
+    <div class="qa-tile" id="tile-invest">
+      <details class="qa-def"><summary class="qa-tile-label">Investimento</summary><p class="qa-def-text">Valor investido em mídia no canal Online na semana, conforme a planilha "dados semana" (não inclui a Helena).</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="ck" data-source="custo_semana" data-field="investimento" data-fmt="brl">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="ck" data-source="custo_semana" data-field="var_investimento" data-fmt="rel" data-good="down">—</span> vs. <span data-draw="ck" data-source="custo_semana" data-field="ant_investimento" data-fmt="brl">—</span></p>
+    </div>
+    <div class="qa-tile" id="tile-cpl">
+      <details class="qa-def"><summary class="qa-tile-label">Custo por lead</summary><p class="qa-def-text">Investimento ÷ leads que entraram no funil Online na semana. Quanto custou, em média, cada contato.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="ck" data-source="custo_semana" data-field="cpl" data-fmt="brl2">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="ck" data-source="custo_semana" data-field="var_cpl" data-fmt="rel" data-good="down">—</span> vs. <span data-draw="ck" data-source="custo_semana" data-field="ant_cpl" data-fmt="brl2">—</span></p>
+    </div>
+    <div class="qa-tile qa-feature" id="tile-cplq">
+      <details class="qa-def"><summary class="qa-tile-label">Custo por lead qualificado</summary><p class="qa-def-text">Investimento ÷ leads qualificados. Quanto custou, em média, cada lead com perfil de cliente.</p></details>
+      <p class="qa-tile-value dash-skeleton" data-draw="ck" data-source="custo_semana" data-field="cplq" data-fmt="brl">—</p>
+      <p class="qa-delta qa-ifweek"><span data-draw="ck" data-source="custo_semana" data-field="var_cplq" data-fmt="rel" data-good="down">—</span> vs. <span data-draw="ck" data-source="custo_semana" data-field="ant_cplq" data-fmt="brl">—</span></p>
+    </div>
+    <div class="qa-tile" id="tile-cleads">
+      <details class="qa-def"><summary class="qa-tile-label">Leads · Qualificados</summary><p class="qa-def-text">Números da planilha "dados semana": entrada no funil Online e leads qualificados usados no cálculo dos custos.</p></details>
+      <p class="qa-tile-value dash-skeleton"><span data-draw="ck" data-source="custo_semana" data-field="leads">—</span> · <span data-draw="ck" data-source="custo_semana" data-field="qualificados">—</span></p>
+      <p class="qa-delta">Entrada no funil Online</p>
+    </div>
+    </section>
+    <p class="qa-sub">Custo por lead = investimento ÷ leads que entraram no funil Online. Custo por lead qualificado = investimento ÷ leads qualificados. Para custos, subir é ruim: as variações em vermelho indicam custo maior que na semana anterior.</p>
+
+    <section class="qa-section" id="evolucao-cpl">
+      <h2 class="qa-h2">Evolução do custo por lead</h2>
+      <p class="qa-sub">Valores em reais. Semanas com custo muito acima do normal ficam na faixa destacada, com o valor escrito no topo, fora da escala, para não achatar as demais.</p>
+      <div class="qa-card">
+        <div class="qa-chart dash-skeleton" id="grafico-cpl" data-draw="lcpl" data-source="custo_semana"></div>
+      </div>
+    </section>
+
+    <section class="qa-section" id="evolucao-cplq">
+      <h2 class="qa-h2">Evolução do custo por lead qualificado</h2>
+      <div class="qa-card">
+        <div class="qa-chart dash-skeleton" id="grafico-cplq" data-draw="lcplq" data-source="custo_semana"></div>
+      </div>
+      <p class="qa-sub">Valores em reais. Semanas com custo muito acima do normal ficam na faixa destacada, com o valor escrito no topo, fora da escala, para não achatar as demais.</p>
+    </section>
+
+    <section class="qa-section" id="evolucao-invest">
+      <h2 class="qa-h2">Investimento por semana</h2>
+      <p class="qa-sub">Valores em milhares de reais (R$ mil). Em destaque, a semana mais recente (dourado) e a anterior (azul forte).</p>
+      <div class="qa-card">
+        <div class="qa-chart dash-skeleton" id="grafico-invest" data-draw="binv" data-source="custo_semana"></div>
+      </div>
+    </section>
+
+    <section class="qa-section" id="tabela-custos-sec">
+      <h2 class="qa-h2">Custos semana a semana</h2>
+      <div class="qa-card">
+        <div class="qa-tablewrap">
+          <table class="qa-table" id="tabela-custos" data-source="custo_semana" data-row-key="semana">
+            <thead><tr><th class="txt" data-field="semana_num">Semana</th><th class="txt">Período</th><th data-field="investimento">Investimento</th><th data-field="leads">Leads</th><th data-field="qualificados">Qualificados</th><th data-field="cpl">Custo por lead</th><th data-field="cplq">Custo por lead qualificado</th></tr></thead>
+            <tbody data-draw="tcustos"></tbody>
+          </table>
+        </div>
+      </div>
+      <p class="qa-sub">Fonte: planilha "dados semana" no Google Drive, canal Online (sem a Helena). Os leads aqui são a entrada no funil Online usada pela planilha, por isso diferem dos leads da Visão geral, que vêm do relatório Qualidade Assertiva do CRM.</p>
+    </section>
+  </section>
+
+  <details class="qa-notes" id="notas">
+    <summary>Definições e fonte dos dados</summary>
+    <ul>
+      <li>Fonte: relatórios "Qualidade Assertiva" exportados do CRM, apenas o canal Online - Empresa (mesmo filtro do painel do CRM). Nome, e-mail e telefone dos leads não foram incluídos.</li>
+      <li>As semanas de 12/10 e 19/10 vêm do export de 26/10; as etapas e classificações desses leads são as daquela data.</li>
+      <li>Qualificado e Desqualificado seguem a classificação "Qualidade Assertiva" do CRM. Descartados são os leads com Descartado = Sim.</li>
+      <li>Avançados: leads em Interessado ou Reunião realizada. Nenhum lead do período chegou a proposta.</li>
+      <li>Comparação da semana: escolha a Semana A e a Semana B; as variações mostram B em relação a A, e a variação da qualificação é dada em pontos percentuais (p.p.).</li>
+      <li>Região: DDD do telefone cruzado com o plano de numeração da Anatel. Telefones fora do padrão de 10 ou 11 dígitos ficam como "Não identificado".</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+// Formatos e ajudas compartilhadas
+(function () {
+  const loc = d3.formatLocale({decimal: ',', thousands: '.', grouping: [3], currency: ['R$ ', '']});
+  const fi = loc.format(',d'), fp = loc.format('.0%'), fr = loc.format('+.0%'), fpp = loc.format('+.0f'), fbrl = loc.format('$,.0f'), fbrl2 = loc.format('$,.2f'), fmil = loc.format(',.1f');
+  window.qaFmt = {
+    int: (v) => fi(v),
+    pct: (v) => fp(v),
+    rel: (v) => fr(v),
+    pp: (v) => fpp(v * 100) + ' p.p.',
+    brl: (v) => fbrl(v),
+    brl2: (v) => fbrl2(v),
+    mil: (v) => fmil(v / 1000)
+  };
+  const parse = d3.utcParse('%Y-%m-%d'), dm = d3.utcFormat('%d/%m'), dd = d3.utcFormat('%d');
+  window.qaWeek = (s, short) => {
+    const a = parse(s); if (!a) return s;
+    const b = d3.utcDay.offset(a, 6);
+    if (short) return dm(a);
+    return (a.getUTCMonth() === b.getUTCMonth() ? dd(a) : dm(a)) + ' a ' + dm(b);
+  };
+  const isoW = d3.utcFormat('%V');
+  window.qaWeekNum = (s) => { const a = parse(s); return a ? String(+isoW(a)) : s; };
+  window.qaWeekName = (s) => 'Semana ' + qaWeekNum(s) + ' (' + qaWeek(s) + ')';
+  window.qaRange = (weeks) => {
+    if (!weeks.length) return '';
+    const a = parse(weeks[0]), b = d3.utcDay.offset(parse(weeks[weeks.length - 1]), 6);
+    return dm(a) + ' a ' + dm(b);
+  };
+  window.qaPair = () => {
+    const k = dash.data('kpi_semana');
+    if (k.status !== 'ok') return null;
+    const ws = k.data.filter((r) => r.semana !== 'todas').map((r) => r.semana);
+    if (ws.length < 2) return null;
+    const pr = dash.params();
+    const sel = (pr.semana && pr.semana !== 'todas') ? String(pr.semana) : ws[ws.length - 1];
+    const b = ws.includes(pr.comp_b) ? pr.comp_b : (ws.includes(sel) ? sel : ws[ws.length - 1]);
+    const ib = ws.indexOf(b);
+    const a = ws.includes(pr.comp_a) ? pr.comp_a : ws[ib > 0 ? ib - 1 : 1];
+    return {a, b, weeks: ws};
+  };
+  window.qaSel = () => { const p = dash.params().semana; return (p == null || p === '') ? 'todas' : String(p); };
+  window.QA_CAMP_ORDER = ['SP', 'RS', 'SC', 'Mista', 'Site', 'Sem campanha'];
+  window.QA_REG_ORDER = ['Sudeste', 'Sul', 'Nordeste', 'Centro-Oeste', 'Norte', 'Não identificado'];
+  // Referências fixas escolhidas para o sinal de qualidade e o melhor público
+  window.QA_LIM_ALTO = 0.4;
+  window.QA_LIM_BAIXO = 0.15;
+  window.QA_MIN_LEADS = 8;
+  window.QA_MIN_COMP = 5;
+
+  window.qaTip = (host) => {
+    const tip = document.createElement('div');
+    tip.className = 'qa-tip'; tip.hidden = true; host.append(tip);
+    return {
+      show(ev, text) {
+        tip.textContent = text; tip.hidden = false;
+        const [mx, my] = d3.pointer(ev, host);
+        const w = tip.offsetWidth, h = tip.offsetHeight, W = host.clientWidth;
+        tip.style.left = Math.max(0, Math.min(mx + 12, W - w)) + 'px';
+        tip.style.top = Math.max(0, my - h - 10) + 'px';
+      },
+      hide() { tip.hidden = true; }
+    };
+  };
+
+  window.qaHBar = (el, rows, o) => {
+    el.replaceChildren();
+    if (!rows.length) { const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = 'Sem dados neste período.'; el.append(p); return; }
+    const W = Math.max(el.clientWidth || 0, 260), rowH = 34, H = rows.length * rowH + 4;
+    const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H).attr('role', 'img').attr('aria-label', o.aria);
+    const measure = (cls, txts) => {
+      const g = svg.append('g'); let m = 0;
+      txts.forEach((t) => { const n = g.append('text').attr('class', cls).text(t).node(); m = Math.max(m, n.getComputedTextLength() || t.length * 7); });
+      g.remove(); return m;
+    };
+    const lw = Math.min(measure('', rows.map((r) => r.label)), W * 0.42);
+    const vw = measure('qa-val', rows.map((r) => r.text));
+    const x0 = lw + 10, span = Math.max(12, W - x0 - vw - 10);
+    const max = d3.max(rows, (r) => r.value) || 1;
+    const x = d3.scaleLinear().domain([0, max]).range([0, span]);
+    const g = svg.selectAll('g.qa-r').data(rows).join('g').attr('class', 'qa-r').attr('transform', (d, i) => `translate(0,${i * rowH})`);
+    g.append('text').attr('x', 0).attr('y', rowH / 2).attr('dy', '0.35em').text((d) => d.label);
+    g.append('rect').attr('x', x0).attr('y', 7).attr('height', rowH - 14).attr('rx', 3)
+      .attr('width', (d) => Math.max(2, x(d.value))).style('fill', (d) => d.color || 'var(--qa-blue)');
+    g.append('text').attr('class', 'qa-val').attr('x', (d) => x0 + Math.max(2, x(d.value)) + 8).attr('y', rowH / 2).attr('dy', '0.35em').text((d) => d.text);
+    const tip = qaTip(el);
+    g.append('rect').attr('x', 0).attr('y', 0).attr('width', W).attr('height', rowH).style('fill', 'transparent')
+      .on('pointermove', (ev, d) => tip.show(ev, d.tip)).on('pointerleave', () => tip.hide());
+  };
+
+  window.qaTone = (v) => (v >= QA_LIM_ALTO ? 'var(--qa-gold)' : v < QA_LIM_BAIXO ? 'var(--cds-chart-status-critical)' : 'var(--qa-blue)');
+  window.qaCell = (tr, text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text; tr.append(td); return td; };
+  window.qaKey = (...parts) => parts.map((p) => encodeURIComponent(p)).join(',');
+  window.qaStatus = (el, st) => {
+    if (st === 'loading') return true;
+    el.classList.remove('dash-skeleton');
+    return false;
+  };
+})();
+
+// Cálculos sobre a base de leads
+dash.calc('kpi_semana', {
+  title: 'Indicadores por semana',
+  description: 'Leads, qualificados, descartados, avançados e reuniões por semana de criação do lead, com a semana anterior e a variação; "todas" soma o período.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort();
+    const resumo = (rs) => {
+      const n = rs.length;
+      const q = rs.filter((l) => l.qualidade === 'Qualificado').length;
+      return {
+        leads: n, qualificados: q, pct_qualificados: n ? q / n : 0,
+        descartados: rs.filter((l) => l.descartado === 'Sim').length,
+        avancados: rs.filter((l) => l.etapa === 'Interessado' || l.etapa === 'Reunião realizada').length,
+        reunioes: rs.filter((l) => l.etapa === 'Reunião realizada').length,
+        interessados_qualificados: rs.filter((l) => l.etapa === 'Interessado' && l.qualidade === 'Qualificado').length
+      };
+    };
+    const linhas = semanas.map((s, i) => {
+      const atual = resumo(leads.filter((l) => l.semana === s));
+      const ant = i > 0 ? resumo(leads.filter((l) => l.semana === semanas[i - 1])) : null;
+      const rel = (a, b) => (b ? a / b - 1 : null);
+      return Object.assign({semana: s}, atual, {
+        ant_leads: ant ? ant.leads : null, ant_qualificados: ant ? ant.qualificados : null,
+        ant_pct_qualificados: ant ? ant.pct_qualificados : null, ant_descartados: ant ? ant.descartados : null,
+        ant_avancados: ant ? ant.avancados : null, ant_reunioes: ant ? ant.reunioes : null,
+        var_leads: ant ? rel(atual.leads, ant.leads) : null, var_qualificados: ant ? rel(atual.qualificados, ant.qualificados) : null,
+        var_pct_qualificados: ant ? atual.pct_qualificados - ant.pct_qualificados : null,
+        var_descartados: ant ? rel(atual.descartados, ant.descartados) : null,
+        var_avancados: ant ? rel(atual.avancados, ant.avancados) : null, var_reunioes: ant ? rel(atual.reunioes, ant.reunioes) : null
+      });
+    });
+    linhas.push(Object.assign({semana: 'todas'}, resumo(leads)));
+    return linhas;
+  }
+});
+
+dash.calc('por_campanha', {
+  title: 'Resultado por campanha',
+  description: 'Leads, qualificados, descartados, avançados e reuniões de cada campanha, por semana e no período ("todas").',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort().concat('todas');
+    const out = [];
+    for (const s of semanas) {
+      const ls = s === 'todas' ? leads : leads.filter((l) => l.semana === s);
+      for (const c of Array.from(new Set(ls.map((l) => l.campanha)))) {
+        const rs = ls.filter((l) => l.campanha === c);
+        const q = rs.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana: s, campanha: c, leads: rs.length, qualificados: q, pct_qualificados: q / rs.length,
+          descartados: rs.filter((l) => l.descartado === 'Sim').length,
+          avancados: rs.filter((l) => l.etapa === 'Interessado' || l.etapa === 'Reunião realizada').length,
+          reunioes: rs.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('por_publico', {
+  title: 'Resultado por público',
+  description: 'Os mesmos indicadores para cada público (mídia) dentro da campanha, por semana e no período ("todas").',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort().concat('todas');
+    const out = [];
+    for (const s of semanas) {
+      const ls = s === 'todas' ? leads : leads.filter((l) => l.semana === s);
+      for (const p of Array.from(new Set(ls.map((l) => l.publico)))) {
+        const rs = ls.filter((l) => l.publico === p);
+        const q = rs.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana: s, campanha: rs[0].campanha, publico: p, leads: rs.length, qualificados: q, pct_qualificados: q / rs.length,
+          descartados: rs.filter((l) => l.descartado === 'Sim').length,
+          avancados: rs.filter((l) => l.etapa === 'Interessado' || l.etapa === 'Reunião realizada').length,
+          reunioes: rs.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('por_corretor', {
+  title: 'Resultado por corretor',
+  description: 'Leads recebidos, qualificados, descartados, avançados e reuniões de cada corretor, por semana e no período ("todas").',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort().concat('todas');
+    const out = [];
+    for (const s of semanas) {
+      const ls = s === 'todas' ? leads : leads.filter((l) => l.semana === s);
+      for (const c of Array.from(new Set(ls.map((l) => l.corretor)))) {
+        const rs = ls.filter((l) => l.corretor === c);
+        const q = rs.filter((l) => l.qualidade === 'Qualificado').length;
+        const d = rs.filter((l) => l.descartado === 'Sim').length;
+        out.push({semana: s, corretor: c, leads: rs.length, qualificados: q, pct_qualificados: q / rs.length,
+          descartados: d, pct_descartados: d / rs.length,
+          avancados: rs.filter((l) => l.etapa === 'Interessado' || l.etapa === 'Reunião realizada').length,
+          reunioes: rs.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('por_regiao', {
+  title: 'Resultado por região (DDD)',
+  description: 'Leads e qualificação por região do DDD do telefone, por semana e no período ("todas"); pct_leads é a participação da região no total.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort().concat('todas');
+    const out = [];
+    for (const s of semanas) {
+      const ls = s === 'todas' ? leads : leads.filter((l) => l.semana === s);
+      for (const r of Array.from(new Set(ls.map((l) => l.regiao)))) {
+        const rs = ls.filter((l) => l.regiao === r);
+        const q = rs.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana: s, regiao: r, leads: rs.length, pct_leads: rs.length / ls.length, qualificados: q, pct_qualificados: q / rs.length,
+          descartados: rs.filter((l) => l.descartado === 'Sim').length,
+          avancados: rs.filter((l) => l.etapa === 'Interessado' || l.etapa === 'Reunião realizada').length,
+          reunioes: rs.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('aderencia', {
+  title: 'Aderência geográfica',
+  description: 'Para as campanhas SP, RS e SC: quantos leads têm DDD do estado da campanha, por semana e no período ("todas").',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort().concat('todas');
+    const out = [];
+    for (const s of semanas) {
+      const ls = s === 'todas' ? leads : leads.filter((l) => l.semana === s);
+      for (const c of ['SP', 'RS', 'SC']) {
+        const rs = ls.filter((l) => l.campanha === c);
+        if (!rs.length) continue;
+        const est = rs.filter((l) => l.uf === c);
+        out.push({semana: s, campanha: c, leads: rs.length, leads_estado: est.length, pct_aderencia: est.length / rs.length,
+          qualificados_estado: est.filter((l) => l.qualidade === 'Qualificado').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('motivos', {
+  title: 'Motivos de descarte',
+  description: 'Leads descartados por motivo, por semana e no período ("todas"); pct_descartes é a participação no total de descartes.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort().concat('todas');
+    const out = [];
+    for (const s of semanas) {
+      const ds = (s === 'todas' ? leads : leads.filter((l) => l.semana === s)).filter((l) => l.descartado === 'Sim');
+      for (const m of Array.from(new Set(ds.map((l) => l.motivo || 'Sem motivo')))) {
+        const n = ds.filter((l) => (l.motivo || 'Sem motivo') === m).length;
+        out.push({semana: s, motivo: m, descartes: n, pct_descartes: n / ds.length});
+      }
+    }
+    return out;
+  }
+});
+
+
+dash.calc('comp_kpi', {
+  title: 'Comparação de indicadores entre duas semanas',
+  description: 'Todos os pares de semanas (A e B): indicadores de cada uma e a variação de B sobre A.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort();
+    const resumo = (rs) => {
+      const n = rs.length, q = rs.filter((l) => l.qualidade === 'Qualificado').length;
+      return {leads: n, qualificados: q, pct: n ? q / n : 0,
+        descartados: rs.filter((l) => l.descartado === 'Sim').length,
+        avancados: rs.filter((l) => l.etapa === 'Interessado' || l.etapa === 'Reunião realizada').length,
+        reunioes: rs.filter((l) => l.etapa === 'Reunião realizada').length};
+    };
+    const rel = (b, a) => (a ? b / a - 1 : null);
+    const out = [];
+    for (const a of semanas) for (const b of semanas) {
+      if (a === b) continue;
+      const A = resumo(leads.filter((l) => l.semana === a)), B = resumo(leads.filter((l) => l.semana === b));
+      out.push({semana_a: a, semana_b: b,
+        leads_a: A.leads, leads_b: B.leads, var_leads: rel(B.leads, A.leads),
+        qualificados_a: A.qualificados, qualificados_b: B.qualificados, var_qualificados: rel(B.qualificados, A.qualificados),
+        pct_a: A.pct, pct_b: B.pct, var_pct: B.pct - A.pct,
+        descartados_a: A.descartados, descartados_b: B.descartados, var_descartados: rel(B.descartados, A.descartados),
+        avancados_a: A.avancados, avancados_b: B.avancados, var_avancados: rel(B.avancados, A.avancados),
+        reunioes_a: A.reunioes, reunioes_b: B.reunioes, var_reunioes: rel(B.reunioes, A.reunioes)});
+    }
+    return out;
+  }
+});
+
+dash.calc('comp_campanha', {
+  title: 'Comparação por campanha',
+  description: 'Todos os pares de semanas (A e B): leads, qualificados, % de qualificação, variação de B sobre A em pontos percentuais e reuniões.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort();
+    const out = [];
+    for (const a of semanas) for (const b of semanas) {
+      if (a === b) continue;
+      const la = leads.filter((l) => l.semana === a), lb = leads.filter((l) => l.semana === b);
+      for (const k of Array.from(new Set(la.concat(lb).map((l) => l.campanha)))) {
+        const ra = la.filter((l) => l.campanha === k), rb = lb.filter((l) => l.campanha === k);
+        const qa = ra.filter((l) => l.qualidade === 'Qualificado').length, qb = rb.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana_a: a, semana_b: b, campanha: k,
+          leads_a: ra.length, leads_b: rb.length, qualificados_a: qa, qualificados_b: qb,
+          pct_a: ra.length ? qa / ra.length : null, pct_b: rb.length ? qb / rb.length : null,
+          var_pp: ra.length && rb.length ? qb / rb.length - qa / ra.length : null,
+          reunioes_a: ra.filter((l) => l.etapa === 'Reunião realizada').length,
+          reunioes_b: rb.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('comp_publico', {
+  title: 'Comparação por público',
+  description: 'Todos os pares de semanas (A e B): leads, qualificados, % de qualificação, variação de B sobre A em pontos percentuais e reuniões.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort();
+    const out = [];
+    for (const a of semanas) for (const b of semanas) {
+      if (a === b) continue;
+      const la = leads.filter((l) => l.semana === a), lb = leads.filter((l) => l.semana === b);
+      for (const k of Array.from(new Set(la.concat(lb).map((l) => l.publico)))) {
+        const ra = la.filter((l) => l.publico === k), rb = lb.filter((l) => l.publico === k);
+        const qa = ra.filter((l) => l.qualidade === 'Qualificado').length, qb = rb.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana_a: a, semana_b: b, publico: k, campanha: (rb[0] || ra[0]).campanha,
+          leads_a: ra.length, leads_b: rb.length, qualificados_a: qa, qualificados_b: qb,
+          pct_a: ra.length ? qa / ra.length : null, pct_b: rb.length ? qb / rb.length : null,
+          var_pp: ra.length && rb.length ? qb / rb.length - qa / ra.length : null,
+          reunioes_a: ra.filter((l) => l.etapa === 'Reunião realizada').length,
+          reunioes_b: rb.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('comp_regiao', {
+  title: 'Comparação por região (DDD)',
+  description: 'Todos os pares de semanas (A e B): leads, qualificados, % de qualificação, variação de B sobre A em pontos percentuais e reuniões.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort();
+    const out = [];
+    for (const a of semanas) for (const b of semanas) {
+      if (a === b) continue;
+      const la = leads.filter((l) => l.semana === a), lb = leads.filter((l) => l.semana === b);
+      for (const k of Array.from(new Set(la.concat(lb).map((l) => l.regiao)))) {
+        const ra = la.filter((l) => l.regiao === k), rb = lb.filter((l) => l.regiao === k);
+        const qa = ra.filter((l) => l.qualidade === 'Qualificado').length, qb = rb.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana_a: a, semana_b: b, regiao: k,
+          leads_a: ra.length, leads_b: rb.length, qualificados_a: qa, qualificados_b: qb,
+          pct_a: ra.length ? qa / ra.length : null, pct_b: rb.length ? qb / rb.length : null,
+          var_pp: ra.length && rb.length ? qb / rb.length - qa / ra.length : null,
+          reunioes_a: ra.filter((l) => l.etapa === 'Reunião realizada').length,
+          reunioes_b: rb.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('comp_corretor', {
+  title: 'Comparação por corretor',
+  description: 'Todos os pares de semanas (A e B): leads, qualificados, % de qualificação, variação de B sobre A em pontos percentuais e reuniões.',
+  inputs: ['leads'],
+  fn: (leads) => {
+    const semanas = Array.from(new Set(leads.map((l) => l.semana))).sort();
+    const out = [];
+    for (const a of semanas) for (const b of semanas) {
+      if (a === b) continue;
+      const la = leads.filter((l) => l.semana === a), lb = leads.filter((l) => l.semana === b);
+      for (const k of Array.from(new Set(la.concat(lb).map((l) => l.corretor)))) {
+        const ra = la.filter((l) => l.corretor === k), rb = lb.filter((l) => l.corretor === k);
+        const qa = ra.filter((l) => l.qualidade === 'Qualificado').length, qb = rb.filter((l) => l.qualidade === 'Qualificado').length;
+        out.push({semana_a: a, semana_b: b, corretor: k,
+          leads_a: ra.length, leads_b: rb.length, qualificados_a: qa, qualificados_b: qb,
+          pct_a: ra.length ? qa / ra.length : null, pct_b: rb.length ? qb / rb.length : null,
+          var_pp: ra.length && rb.length ? qb / rb.length - qa / ra.length : null,
+          reunioes_a: ra.filter((l) => l.etapa === 'Reunião realizada').length,
+          reunioes_b: rb.filter((l) => l.etapa === 'Reunião realizada').length});
+      }
+    }
+    return out;
+  }
+});
+
+dash.calc('custo_semana', {
+  title: 'Custo por lead e por lead qualificado',
+  description: 'Por semana: investimento Online, leads, qualificados, custo por lead (investimento ÷ leads), custo por lead qualificado (investimento ÷ qualificados) e variação sobre a semana anterior; "todas" soma o período.',
+  inputs: ['custos'],
+  fn: (custos) => {
+    const sem = custos.map((r) => ({semana: r.semana, semana_num: Number(r.semana_num), investimento: Number(r.investimento), leads: Number(r.leads), qualificados: Number(r.qualificados)}))
+      .sort((a, b) => a.semana_num - b.semana_num);
+    const custo = (r) => ({cpl: r.leads ? r.investimento / r.leads : null, cplq: r.qualificados ? r.investimento / r.qualificados : null});
+    const rel = (a, b) => (a != null && b ? a / b - 1 : null);
+    const out = sem.map((r, i) => {
+      const c = custo(r), p = i > 0 ? sem[i - 1] : null, pc = p ? custo(p) : null;
+      return Object.assign({}, r, c, {
+        ant_investimento: p ? p.investimento : null, ant_cpl: pc ? pc.cpl : null, ant_cplq: pc ? pc.cplq : null,
+        var_investimento: p ? rel(r.investimento, p.investimento) : null,
+        var_cpl: pc ? rel(c.cpl, pc.cpl) : null, var_cplq: pc ? rel(c.cplq, pc.cplq) : null});
+    });
+    const tot = {investimento: d3.sum(sem, (r) => r.investimento), leads: d3.sum(sem, (r) => r.leads), qualificados: d3.sum(sem, (r) => r.qualificados)};
+    out.push(Object.assign({semana: 'todas', semana_num: null}, tot, custo(tot)));
+    return out;
+  }
+});
+</script>
+
+<script>
+// Controles, números e frases
+dash.onData(() => {
+  const sel = qaSel();
+  document.querySelectorAll('.qa-ifweek').forEach((n) => { n.hidden = sel === 'todas'; });
+  const pr = qaPair();
+  document.querySelectorAll('.qa-ifsame').forEach((n) => { n.hidden = !!(pr && pr.a !== pr.b); });
+  document.querySelectorAll('.qa-ifcomp').forEach((n) => { n.hidden = !(pr && pr.a !== pr.b); });
+});
+
+dash.draw('semana', (el) => {
+  const k = dash.data('kpi_semana');
+  const rows = k.status === 'ok' ? k.data.filter((r) => r.semana !== 'todas') : [];
+  const opts = rows.slice().reverse().map((r) => new Option(qaWeekName(r.semana), r.semana));
+  if (rows.length) opts.push(new Option('Período completo (Semanas ' + qaWeekNum(rows[0].semana) + ' a ' + qaWeekNum(rows[rows.length - 1].semana) + ')', 'todas'));
+  el.replaceChildren(...opts);
+  el.value = qaSel();
+  el.onchange = () => dash.setParams({semana: el.value});
+});
+
+dash.draw('wlabel', (el) => {
+  const k = dash.data('kpi_semana');
+  if (k.status !== 'ok') { el.textContent = '—'; return; }
+  const sel = qaSel();
+  const ws = k.data.filter((r) => r.semana !== 'todas').map((r) => r.semana);
+  if (sel === 'todas') { el.textContent = 'todo o período, Semanas ' + qaWeekNum(ws[0]) + ' a ' + qaWeekNum(ws[ws.length - 1]) + ' (' + qaRange(ws) + ')'; return; }
+  el.textContent = qaWeekName(sel);
+});
+
+dash.draw('kv', (el) => {
+  const k = dash.data('kpi_semana');
+  if (k.status !== 'ok') { el.textContent = '—'; if (k.status !== 'loading') el.classList.remove('dash-skeleton'); return; }
+  el.classList.remove('dash-skeleton');
+  const sel = qaSel();
+  const r = k.data.find((x) => x.semana === sel) || k.data[k.data.length - 1];
+  el.setAttribute('data-where', 'semana=' + encodeURIComponent(r.semana));
+  const v = r[el.dataset.field];
+  const fmt = qaFmt[el.dataset.fmt || 'int'];
+  el.textContent = v == null ? '—' : fmt(v);
+  if (el.dataset.good) {
+    const better = el.dataset.good === 'up' ? v > 0 : v < 0;
+    el.classList.toggle('good', v != null && v !== 0 && better);
+    el.classList.toggle('bad', v != null && v !== 0 && !better);
+  }
+});
+
+const qaBestPub = () => {
+  const p = dash.data('por_publico');
+  if (p.status !== 'ok') return null;
+  const sel = qaSel();
+  const rs = p.data.filter((r) => r.semana === sel && r.leads >= QA_MIN_LEADS);
+  if (!rs.length) return null;
+  return rs.slice().sort((a, b) => b.pct_qualificados - a.pct_qualificados || b.leads - a.leads)[0];
+};
+dash.draw('minleads', (el) => { el.textContent = String(QA_MIN_LEADS); });
+dash.draw('limalto', (el) => { el.textContent = qaFmt.pct(QA_LIM_ALTO); });
+dash.draw('limbaixo', (el) => { el.textContent = qaFmt.pct(QA_LIM_BAIXO); });
+dash.draw('bestpub', (el) => {
+  const b = qaBestPub();
+  if (!b) { el.textContent = '—'; return; }
+  el.setAttribute('data-where', 'semana=' + encodeURIComponent(b.semana) + '&publico=' + encodeURIComponent(b.publico));
+  el.textContent = b.publico;
+});
+dash.draw('bestpct', (el) => {
+  const b = qaBestPub();
+  if (!b) { el.textContent = '—'; return; }
+  el.setAttribute('data-where', 'semana=' + encodeURIComponent(b.semana) + '&publico=' + encodeURIComponent(b.publico));
+  el.textContent = qaFmt.pct(b.pct_qualificados);
+});
+</script>
+
+<script>
+// Gráficos
+dash.draw('trend', (el) => {
+  const k = dash.data('kpi_semana');
+  if (qaStatus(el, k.status)) return;
+  if (k.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = k.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const rows = k.data.filter((r) => r.semana !== 'todas');
+  const sel = qaSel();
+  el.replaceChildren();
+  const W = Math.max(el.clientWidth || 0, 280), H = 260, m = {t: 24, r: 4, b: 46, l: 4};
+  const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H)
+    .attr('role', 'img').attr('aria-label', 'Leads e qualificados por semana, com o percentual de qualificação');
+  const x = d3.scaleBand().domain(rows.map((r) => r.semana)).range([m.l, W - m.r]).paddingInner(0.28).paddingOuter(0.08);
+  const xi = d3.scaleBand().domain(['leads', 'qualificados']).range([0, x.bandwidth()]).padding(0.08);
+  const y = d3.scaleLinear().domain([0, d3.max(rows, (r) => r.leads) || 1]).nice().range([H - m.b, m.t]);
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(0)).attr('y2', y(0)).style('stroke', 'var(--cds-chart-axis)');
+  const short = x.bandwidth() < 96;
+  const g = svg.selectAll('g.qa-w').data(rows).join('g').attr('class', 'qa-w')
+    .attr('transform', (d) => `translate(${x(d.semana)},0)`)
+    .style('opacity', (d) => (sel === 'todas' || d.semana === sel ? 1 : 0.45));
+  ['leads', 'qualificados'].forEach((f) => {
+    g.append('rect').attr('x', xi(f)).attr('width', xi.bandwidth()).attr('y', (d) => y(d[f])).attr('height', (d) => y(0) - y(d[f])).attr('rx', 2)
+      .style('fill', f === 'leads' ? 'var(--qa-blue-soft)' : 'var(--qa-gold)');
+    g.append('text').attr('class', 'qa-val').attr('text-anchor', 'middle').attr('x', xi(f) + xi.bandwidth() / 2).attr('y', (d) => y(d[f]) - 6).text((d) => qaFmt.int(d[f]));
+  });
+  const lab = g.append('text').attr('text-anchor', 'middle').attr('y', H - m.b + 18);
+  lab.append('tspan').attr('x', x.bandwidth() / 2).text((d) => (short ? 'Sem. ' : 'Semana ') + qaWeekNum(d.semana));
+  lab.append('tspan').attr('x', x.bandwidth() / 2).attr('dy', 18).text((d) => (short ? '' : qaWeek(d.semana) + ' · ') + qaFmt.pct(d.pct_qualificados) + ' qualif.');
+  const tip = qaTip(el);
+  g.append('rect').attr('x', 0).attr('y', 0).attr('width', x.bandwidth()).attr('height', H).style('fill', 'transparent')
+    .on('pointermove', (ev, d) => tip.show(ev, qaWeekName(d.semana) + '\nLeads: ' + qaFmt.int(d.leads) + '\nQualificados: ' + qaFmt.int(d.qualificados) + ' (' + qaFmt.pct(d.pct_qualificados) + ')\nDescartados: ' + qaFmt.int(d.descartados) + '\nAvançados: ' + qaFmt.int(d.avancados) + '\nReuniões: ' + qaFmt.int(d.reunioes)))
+    .on('pointerleave', () => tip.hide());
+});
+
+dash.draw('hcamp', (el) => {
+  const c = dash.data('por_campanha');
+  if (qaStatus(el, c.status)) return;
+  if (c.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = c.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const sel = qaSel();
+  const rows = c.data.filter((r) => r.semana === sel)
+    .sort((a, b) => QA_CAMP_ORDER.indexOf(a.campanha) - QA_CAMP_ORDER.indexOf(b.campanha))
+    .map((r) => ({label: r.campanha, value: r.pct_qualificados, color: qaTone(r.pct_qualificados),
+      text: qaFmt.pct(r.pct_qualificados) + ' · ' + qaFmt.int(r.qualificados) + ' de ' + qaFmt.int(r.leads),
+      tip: r.campanha + '\nLeads: ' + qaFmt.int(r.leads) + '\nQualificados: ' + qaFmt.int(r.qualificados) + ' (' + qaFmt.pct(r.pct_qualificados) + ')\nDescartados: ' + qaFmt.int(r.descartados) + '\nAvançados: ' + qaFmt.int(r.avancados) + '\nReuniões: ' + qaFmt.int(r.reunioes)}));
+  qaHBar(el, rows, {aria: 'Percentual de leads qualificados por campanha'});
+});
+
+dash.draw('hreg', (el) => {
+  const c = dash.data('por_regiao');
+  if (qaStatus(el, c.status)) return;
+  if (c.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = c.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const sel = qaSel();
+  const rows = c.data.filter((r) => r.semana === sel)
+    .sort((a, b) => QA_REG_ORDER.indexOf(a.regiao) - QA_REG_ORDER.indexOf(b.regiao))
+    .map((r) => ({label: r.regiao, value: r.pct_qualificados, color: qaTone(r.pct_qualificados),
+      text: qaFmt.pct(r.pct_qualificados) + ' · ' + qaFmt.int(r.qualificados) + ' de ' + qaFmt.int(r.leads),
+      tip: r.regiao + '\nLeads: ' + qaFmt.int(r.leads) + ' (' + qaFmt.pct(r.pct_leads) + ' do total)\nQualificados: ' + qaFmt.int(r.qualificados) + ' (' + qaFmt.pct(r.pct_qualificados) + ')\nDescartados: ' + qaFmt.int(r.descartados) + '\nAvançados: ' + qaFmt.int(r.avancados)}));
+  qaHBar(el, rows, {aria: 'Percentual de leads qualificados por região do DDD'});
+});
+
+dash.draw('hmot', (el) => {
+  const c = dash.data('motivos');
+  if (qaStatus(el, c.status)) return;
+  if (c.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = c.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const sel = qaSel();
+  const rows = c.data.filter((r) => r.semana === sel).sort((a, b) => b.descartes - a.descartes)
+    .map((r) => ({label: r.motivo.charAt(0) + r.motivo.slice(1).toLowerCase(), value: r.descartes, color: 'var(--qa-blue-soft)',
+      text: qaFmt.int(r.descartes) + ' · ' + qaFmt.pct(r.pct_descartes),
+      tip: r.motivo + '\nDescartes: ' + qaFmt.int(r.descartes) + '\n' + qaFmt.pct(r.pct_descartes) + ' dos descartes do período'}));
+  qaHBar(el, rows, {aria: 'Leads descartados por motivo'});
+});
+</script>
+
+<script>
+// Tabelas
+dash.draw('tpub', (tb) => {
+  const p = dash.data('por_publico');
+  tb.replaceChildren();
+  if (p.status !== 'ok') return;
+  const sel = qaSel();
+  const rows = p.data.filter((r) => r.semana === sel)
+    .sort((a, b) => QA_CAMP_ORDER.indexOf(a.campanha) - QA_CAMP_ORDER.indexOf(b.campanha) || b.leads - a.leads);
+  rows.forEach((r) => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-key', qaKey(r.semana, r.publico));
+    qaCell(tr, r.campanha, 'txt'); qaCell(tr, r.publico, 'txt');
+    qaCell(tr, qaFmt.int(r.leads)); qaCell(tr, qaFmt.int(r.qualificados)); qaCell(tr, qaFmt.pct(r.pct_qualificados));
+    const s = qaCell(tr, '', 'txt');
+    if (r.pct_qualificados >= QA_LIM_ALTO) { const pl = document.createElement('span'); pl.className = 'qa-pill alto'; pl.textContent = 'Alto'; s.append(pl); }
+    else if (r.pct_qualificados < QA_LIM_BAIXO) { const pl = document.createElement('span'); pl.className = 'qa-pill baixo'; pl.textContent = 'Baixo'; s.append(pl); }
+    qaCell(tr, qaFmt.int(r.descartados)); qaCell(tr, qaFmt.int(r.avancados)); qaCell(tr, qaFmt.int(r.reunioes));
+    tb.append(tr);
+  });
+});
+
+dash.draw('tcor', (tb) => {
+  const p = dash.data('por_corretor');
+  tb.replaceChildren();
+  if (p.status !== 'ok') return;
+  const sel = qaSel();
+  p.data.filter((r) => r.semana === sel).sort((a, b) => b.leads - a.leads).forEach((r) => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-key', qaKey(r.semana, r.corretor));
+    qaCell(tr, r.corretor, 'txt'); qaCell(tr, qaFmt.int(r.leads)); qaCell(tr, qaFmt.int(r.qualificados)); qaCell(tr, qaFmt.pct(r.pct_qualificados));
+    qaCell(tr, qaFmt.int(r.descartados)); qaCell(tr, qaFmt.pct(r.pct_descartados)); qaCell(tr, qaFmt.int(r.avancados)); qaCell(tr, qaFmt.int(r.reunioes));
+    tb.append(tr);
+  });
+});
+
+dash.draw('tade', (tb) => {
+  const p = dash.data('aderencia');
+  tb.replaceChildren();
+  if (p.status !== 'ok') return;
+  const sel = qaSel();
+  p.data.filter((r) => r.semana === sel).forEach((r) => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-key', qaKey(r.semana, r.campanha));
+    qaCell(tr, r.campanha, 'txt'); qaCell(tr, qaFmt.int(r.leads)); qaCell(tr, qaFmt.int(r.leads_estado));
+    qaCell(tr, qaFmt.pct(r.pct_aderencia)); qaCell(tr, qaFmt.int(r.qualificados_estado));
+    tb.append(tr);
+  });
+});
+</script>
+
+<script>
+// Abas
+(function () {
+  const open = (id) => {
+    document.querySelectorAll('.qa-tab').forEach((b) => {
+      const on = b.dataset.tab === id;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('#visao, #comparacao, #custos').forEach((sec) => { sec.hidden = sec.id !== id; });
+  };
+  document.querySelectorAll('.qa-tab').forEach((b) => {
+    b.addEventListener('click', () => { open(b.dataset.tab); dash.setLink(b.dataset.tab); });
+  });
+  if (location.hash === '#comparacao') open('comparacao');
+  if (location.hash === '#custos') open('custos');
+})();
+
+// Comparação entre duas semanas
+const qaWeekSelect = (el, which) => {
+  const pr = qaPair();
+  if (!pr) { el.replaceChildren(); return; }
+  el.replaceChildren(...pr.weeks.slice().reverse().map((w) => new Option(qaWeekName(w), w)));
+  el.value = pr[which];
+  el.onchange = () => dash.setParams(which === 'a' ? {comp_a: el.value} : {comp_b: el.value});
+};
+dash.draw('compa', (el) => qaWeekSelect(el, 'a'));
+dash.draw('compb', (el) => qaWeekSelect(el, 'b'));
+dash.draw('wa', (el) => { const pr = qaPair(); el.textContent = pr ? qaWeekName(pr.a) : '—'; });
+dash.draw('wb', (el) => { const pr = qaPair(); el.textContent = pr ? qaWeekName(pr.b) : '—'; });
+dash.draw('mincomp', (el) => { el.textContent = String(QA_MIN_COMP); });
+const qaPairRows = (src) => {
+  const d = dash.data(src), pr = qaPair();
+  if (d.status !== 'ok' || !pr) return null;
+  return d.data.filter((r) => r.semana_a === pr.a && r.semana_b === pr.b);
+};
+const qaPairWhere = (r, extra) => 'semana_a=' + encodeURIComponent(r.semana_a) + '&semana_b=' + encodeURIComponent(r.semana_b) + (extra || '');
+
+dash.draw('kc', (el) => {
+  const rows = qaPairRows('comp_kpi');
+  if (!rows || !rows.length) { el.textContent = '—'; return; }
+  const r = rows[0];
+  el.setAttribute('data-where', qaPairWhere(r));
+  const v = r[el.dataset.field];
+  el.textContent = v == null ? '—' : qaFmt[el.dataset.fmt || 'int'](v);
+  if (el.dataset.good) {
+    const better = el.dataset.good === 'up' ? v > 0 : v < 0;
+    el.classList.toggle('good', v != null && v !== 0 && better);
+    el.classList.toggle('bad', v != null && v !== 0 && !better);
+  }
+});
+
+const qaCompTable = (tb, src, dim, withCamp) => {
+  tb.replaceChildren();
+  let rows = qaPairRows(src);
+  if (!rows) return;
+  const pv = (v) => (v == null ? '—' : qaFmt.pct(v));
+  rows = withCamp
+    ? rows.sort((a, b) => QA_CAMP_ORDER.indexOf(a.campanha) - QA_CAMP_ORDER.indexOf(b.campanha) || b.leads_b - a.leads_b)
+    : dim === 'regiao' ? rows.sort((a, b) => QA_REG_ORDER.indexOf(a.regiao) - QA_REG_ORDER.indexOf(b.regiao))
+    : dim === 'campanha' ? rows.sort((a, b) => QA_CAMP_ORDER.indexOf(a.campanha) - QA_CAMP_ORDER.indexOf(b.campanha))
+    : rows.sort((a, b) => b.leads_b - a.leads_b);
+  rows.forEach((r) => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-key', qaKey(r.semana_a, r.semana_b, r[dim]));
+    if (withCamp) qaCell(tr, r.campanha, 'txt');
+    qaCell(tr, r[dim], 'txt');
+    qaCell(tr, qaFmt.int(r.leads_a)); qaCell(tr, qaFmt.int(r.leads_b), 'qa-cur');
+    qaCell(tr, pv(r.pct_a)); qaCell(tr, pv(r.pct_b), 'qa-cur');
+    const v = qaCell(tr, r.var_pp == null ? '—' : qaFmt.pp(r.var_pp));
+    if (r.var_pp != null && Math.abs(r.var_pp) >= 0.005) v.classList.add(r.var_pp > 0 ? 'good' : 'bad');
+    qaCell(tr, qaFmt.int(r.reunioes_a)); qaCell(tr, qaFmt.int(r.reunioes_b), 'qa-cur');
+    tb.append(tr);
+  });
+};
+dash.draw('comp_campanha', (tb) => qaCompTable(tb, 'comp_campanha', 'campanha', false));
+dash.draw('comp_publico', (tb) => qaCompTable(tb, 'comp_publico', 'publico', true));
+dash.draw('comp_regiao', (tb) => qaCompTable(tb, 'comp_regiao', 'regiao', false));
+dash.draw('comp_corretor', (tb) => qaCompTable(tb, 'comp_corretor', 'corretor', false));
+
+const qaMoves = (ul, dir) => {
+  ul.replaceChildren();
+  let rows = qaPairRows('comp_publico');
+  if (!rows) return;
+  rows = rows.filter((r) => r.leads_a >= QA_MIN_COMP && r.leads_b >= QA_MIN_COMP && r.var_pp != null && (dir > 0 ? r.var_pp > 0 : r.var_pp < 0))
+    .sort((a, b) => dir * (b.var_pp - a.var_pp)).slice(0, 3);
+  if (!rows.length) { const li = document.createElement('li'); li.textContent = dir > 0 ? 'Nenhum público subiu.' : 'Nenhum público caiu.'; ul.append(li); return; }
+  rows.forEach((r) => {
+    const li = document.createElement('li');
+    const a = document.createElement('span'); a.textContent = r.publico;
+    const b = document.createElement('span');
+    b.textContent = qaFmt.pct(r.pct_a) + ' → ' + qaFmt.pct(r.pct_b) + ' (' + qaFmt.pp(r.var_pp) + ')';
+    b.className = r.var_pp > 0 ? 'good' : 'bad';
+    b.setAttribute('data-source', 'comp_publico'); b.setAttribute('data-field', 'var_pp');
+    b.setAttribute('data-where', qaPairWhere(r, '&publico=' + encodeURIComponent(r.publico)));
+    li.append(a, b); ul.append(li);
+  });
+};
+dash.draw('altas', (ul) => qaMoves(ul, 1));
+dash.draw('quedas', (ul) => qaMoves(ul, -1));
+
+dash.draw('dumb', (el) => {
+  const c = dash.data('comp_campanha');
+  if (qaStatus(el, c.status)) return;
+  if (c.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = c.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const rows = (qaPairRows('comp_campanha') || []).sort((a, b) => QA_CAMP_ORDER.indexOf(a.campanha) - QA_CAMP_ORDER.indexOf(b.campanha));
+  el.replaceChildren();
+  if (!rows.length) { const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = 'Sem dados para comparar.'; el.append(p); return; }
+  const W = Math.max(el.clientWidth || 0, 280), rowH = 40, top = 26, H = top + rows.length * rowH + 4;
+  const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H).attr('role', 'img')
+    .attr('aria-label', 'Percentual de qualificação por campanha na Semana A e na Semana B');
+  const lab = (d) => (d.pct_a == null ? '—' : qaFmt.pct(d.pct_a)) + ' → ' + (d.pct_b == null ? '—' : qaFmt.pct(d.pct_b));
+  const tmp = svg.append('g'); let lw = 0, vw = 0;
+  rows.forEach((r) => {
+    lw = Math.max(lw, tmp.append('text').text(r.campanha).node().getComputedTextLength() || r.campanha.length * 7);
+    vw = Math.max(vw, tmp.append('text').attr('class', 'qa-val').text(lab(r)).node().getComputedTextLength() || 90);
+  });
+  tmp.remove();
+  const x0 = Math.min(lw, W * 0.35) + 14, x1 = W - vw - 14;
+  const max = Math.max(0.1, d3.max(rows, (r) => Math.max(r.pct_a || 0, r.pct_b || 0)));
+  const x = d3.scaleLinear().domain([0, max]).nice(4).range([x0, Math.max(x0 + 40, x1)]);
+  const ticks = x.ticks(4);
+  svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', (t) => x(t)).attr('x2', (t) => x(t)).attr('y1', top - 6).attr('y2', H).style('stroke', 'var(--cds-chart-grid)');
+  svg.append('g').selectAll('text').data(ticks).join('text').attr('x', (t) => x(t)).attr('y', 12).attr('text-anchor', 'middle').text((t) => qaFmt.pct(t));
+  const g = svg.selectAll('g.qa-d').data(rows).join('g').attr('class', 'qa-d').attr('transform', (d, i) => `translate(0,${top + i * rowH + rowH / 2})`);
+  g.append('text').attr('x', 0).attr('dy', '0.35em').text((d) => d.campanha);
+  g.filter((d) => d.pct_a != null && d.pct_b != null).append('line').attr('x1', (d) => x(d.pct_a)).attr('x2', (d) => x(d.pct_b))
+    .style('stroke', (d) => (d.pct_b >= d.pct_a ? 'var(--color-ok)' : 'var(--color-bad)')).style('stroke-width', 3).style('opacity', 0.55);
+  g.filter((d) => d.pct_a != null).append('circle').attr('cx', (d) => x(d.pct_a)).attr('r', 7).style('fill', 'var(--qa-blue-soft)');
+  g.filter((d) => d.pct_b != null).append('circle').attr('cx', (d) => x(d.pct_b)).attr('r', 8).style('fill', 'var(--qa-gold)').style('stroke', 'var(--color-panel)').style('stroke-width', 2);
+  g.append('text').attr('class', 'qa-val').attr('x', x.range()[1] + 14).attr('dy', '0.35em').text(lab);
+  const tip = qaTip(el);
+  g.append('rect').attr('x', 0).attr('y', -rowH / 2).attr('width', W).attr('height', rowH).style('fill', 'transparent')
+    .on('pointermove', (ev, d) => tip.show(ev, d.campanha + '\nSemana A — ' + qaWeekName(d.semana_a) + ': ' + (d.pct_a == null ? '—' : qaFmt.pct(d.pct_a)) + ' (' + qaFmt.int(d.qualificados_a) + ' de ' + qaFmt.int(d.leads_a) + ')\nSemana B — ' + qaWeekName(d.semana_b) + ': ' + (d.pct_b == null ? '—' : qaFmt.pct(d.pct_b)) + ' (' + qaFmt.int(d.qualificados_b) + ' de ' + qaFmt.int(d.leads_b) + ')' + (d.var_pp == null ? '' : '\nVariação: ' + qaFmt.pp(d.var_pp))))
+    .on('pointerleave', () => tip.hide());
+});
+// Custos
+const qaCustoRow = () => {
+  const c = dash.data('custo_semana');
+  if (c.status !== 'ok') return null;
+  const sel = qaSel();
+  return c.data.find((r) => r.semana === sel) || c.data.filter((r) => r.semana !== 'todas').slice(-1)[0];
+};
+dash.draw('ck', (el) => {
+  const c = dash.data('custo_semana');
+  if (c.status !== 'ok') { el.textContent = '—'; if (c.status !== 'loading') el.closest('.dash-skeleton') && el.closest('.dash-skeleton').classList.remove('dash-skeleton'); return; }
+  const host = el.classList.contains('dash-skeleton') ? el : el.closest('.dash-skeleton');
+  if (host) host.classList.remove('dash-skeleton');
+  const r = qaCustoRow();
+  el.setAttribute('data-where', 'semana=' + encodeURIComponent(r.semana));
+  const v = r[el.dataset.field];
+  el.textContent = v == null ? '—' : qaFmt[el.dataset.fmt || 'int'](v);
+  if (el.dataset.good) {
+    const better = el.dataset.good === 'up' ? v > 0 : v < 0;
+    el.classList.toggle('good', v != null && v !== 0 && better);
+    el.classList.toggle('bad', v != null && v !== 0 && !better);
+  }
+});
+dash.draw('cklabel', (el) => {
+  const c = dash.data('custo_semana');
+  if (c.status !== 'ok') { el.textContent = '—'; return; }
+  const ws = c.data.filter((r) => r.semana !== 'todas');
+  const sel = qaSel();
+  el.textContent = sel === 'todas' ? 'todo o histórico da planilha, Semanas ' + ws[0].semana_num + ' a ' + ws[ws.length - 1].semana_num : qaWeekName(qaCustoRow().semana);
+});
+
+const qaCostLine = (el, field, aria) => {
+  const c = dash.data('custo_semana');
+  if (qaStatus(el, c.status)) return;
+  if (c.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = c.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const rows = c.data.filter((r) => r.semana !== 'todas' && r[field] != null);
+  const sel = qaSel();
+  el.replaceChildren();
+  const W = Math.max(el.clientWidth || 0, 280), H = 300, m = {t: 52, r: 18, b: 34, l: 16};
+  const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H).attr('role', 'img').attr('aria-label', aria);
+  const vals = rows.map((r) => r[field]).sort(d3.ascending);
+  const cap = (d3.quantile(vals, 0.75) || 1) * 2.5;
+  const out = (r) => r[field] > cap;
+  const normal = rows.filter((r) => !out(r));
+  const y = d3.scaleLinear().domain([0, (d3.max(normal, (r) => r[field]) || 1) * 1.18]).nice(4).range([H - m.b, m.t]);
+  const ticks = y.ticks(4);
+  const tg = svg.append('g'); let lw = 0;
+  ticks.forEach((t) => { lw = Math.max(lw, tg.append('text').text(qaFmt.brl(t)).node().getComputedTextLength() || 50); });
+  tg.remove();
+  m.l = lw + 12;
+  const x = d3.scalePoint().domain(rows.map((r) => r.semana)).range([m.l + 14, W - m.r - 14]);
+  const st = x.step();
+  // faixa das semanas fora da escala
+  const band = svg.append('g');
+  rows.filter(out).forEach((r) => {
+    band.append('rect').attr('x', x(r.semana) - st / 2).attr('y', m.t - 34).attr('width', st).attr('height', H - m.b - m.t + 34)
+      .style('fill', 'var(--qa-gold)').style('opacity', 0.12);
+  });
+  svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', (t) => y(t)).attr('y2', (t) => y(t)).style('stroke', 'var(--cds-chart-grid)');
+  svg.append('g').selectAll('text').data(ticks).join('text').attr('x', m.l - 8).attr('y', (t) => y(t)).attr('dy', '0.35em').attr('text-anchor', 'end').text((t) => qaFmt.brl(t));
+  const step = st < 28 ? 2 : 1;
+  svg.append('g').selectAll('text').data(rows.filter((r, i) => i % step === (rows.length - 1) % step)).join('text')
+    .attr('x', (r) => x(r.semana)).attr('y', H - m.b + 18).attr('text-anchor', 'middle').text((r) => r.semana_num);
+  svg.append('text').attr('x', W - m.r).attr('y', H - 2).attr('text-anchor', 'end').text('Semana');
+  // linha só entre semanas normais e consecutivas
+  const segs = [];
+  for (let i = 1; i < rows.length; i++) if (!out(rows[i - 1]) && !out(rows[i])) segs.push([rows[i - 1], rows[i]]);
+  svg.append('g').selectAll('line').data(segs).join('line')
+    .attr('x1', (s) => x(s[0].semana)).attr('y1', (s) => y(s[0][field])).attr('x2', (s) => x(s[1].semana)).attr('y2', (s) => y(s[1][field]))
+    .style('stroke', 'var(--qa-gold)').style('stroke-width', 2.5).style('stroke-linecap', 'round');
+  const last = rows[rows.length - 1].semana;
+  const strong = (r) => r.semana === sel || r.semana === last;
+  const showAll = st >= 40;
+  // pontos normais
+  const pn = svg.append('g').selectAll('g').data(normal).join('g').attr('transform', (r) => `translate(${x(r.semana)},${y(r[field])})`);
+  pn.append('circle').attr('r', (r) => (strong(r) ? 6 : 4))
+    .style('fill', (r) => (strong(r) ? 'var(--qa-navy)' : 'var(--qa-gold)'))
+    .style('stroke', (r) => (strong(r) ? 'var(--qa-gold)' : 'var(--color-panel)')).style('stroke-width', 2);
+  pn.filter((r) => showAll || strong(r)).append('text').attr('class', 'qa-val').attr('text-anchor', 'middle').attr('y', -12)
+    .style('font-weight', (r) => (strong(r) ? 700 : null))
+    .style('fill', (r) => (strong(r) ? 'var(--color-fg)' : 'var(--cds-text-secondary)'))
+    .text((r) => qaFmt.int(Math.round(r[field])));
+  // semanas fora da escala: seta no topo e valor escrito
+  const po = svg.append('g').selectAll('g').data(rows.filter(out)).join('g').attr('transform', (r) => `translate(${x(r.semana)},${m.t - 4})`);
+  po.append('path').attr('d', 'M-6,4 L0,-5 L6,4 Z').style('fill', 'var(--qa-gold)');
+  po.append('text').attr('class', 'qa-val').attr('text-anchor', 'middle').attr('y', -14).style('font-weight', 700)
+    .text((r) => qaFmt.int(Math.round(r[field])));
+  if (rows.some(out)) {
+    const first = rows.find(out);
+    svg.append('text').attr('x', x(first.semana) - st / 2 + 4).attr('y', H - m.b - 8).attr('text-anchor', 'start').style('font-style', 'italic')
+      .text('fora da escala');
+  }
+  const tip = qaTip(el);
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', (r) => x(r.semana) - st / 2).attr('y', 0).attr('width', st).attr('height', H).style('fill', 'transparent')
+    .on('pointermove', (ev, r) => tip.show(ev, qaWeekName(r.semana) + '\nInvestimento: ' + qaFmt.brl(r.investimento) + '\nLeads: ' + qaFmt.int(r.leads) + ' · Qualificados: ' + qaFmt.int(r.qualificados) + '\nCusto por lead: ' + (r.cpl == null ? '—' : qaFmt.brl2(r.cpl)) + '\nCusto por lead qualificado: ' + (r.cplq == null ? '—' : qaFmt.brl(r.cplq)) + (out(r) ? '\nFora da escala do gráfico' : '')))
+    .on('pointerleave', () => tip.hide());
+};
+dash.draw('lcpl', (el) => qaCostLine(el, 'cpl', 'Evolução semanal do custo por lead'));
+dash.draw('lcplq', (el) => qaCostLine(el, 'cplq', 'Evolução semanal do custo por lead qualificado'));
+
+dash.draw('binv', (el) => {
+  const c = dash.data('custo_semana');
+  if (qaStatus(el, c.status)) return;
+  if (c.status !== 'ok') { el.replaceChildren(); const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = c.status === 'error' ? 'Falha ao carregar' : '—'; el.append(p); return; }
+  const rows = c.data.filter((r) => r.semana !== 'todas');
+  const sel = qaSel();
+  el.replaceChildren();
+  const W = Math.max(el.clientWidth || 0, 280), H = 220, m = {t: 24, r: 8, b: 34, l: 8};
+  const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H).attr('role', 'img').attr('aria-label', 'Investimento Online por semana');
+  const x = d3.scaleBand().domain(rows.map((r) => r.semana)).range([m.l, W - m.r]).padding(0.25);
+  const y = d3.scaleLinear().domain([0, d3.max(rows, (r) => r.investimento) || 1]).nice().range([H - m.b, m.t]);
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(0)).attr('y2', y(0)).style('stroke', 'var(--cds-chart-axis)');
+  const g = svg.selectAll('g.qa-b').data(rows).join('g').attr('class', 'qa-b').attr('transform', (r) => `translate(${x(r.semana)},0)`);
+  const recent = new Set(rows.slice(-2).map((r) => r.semana));
+  const lastW = rows[rows.length - 1].semana, prevW = rows.length > 1 ? rows[rows.length - 2].semana : null;
+  g.append('rect').attr('y', (r) => y(r.investimento)).attr('height', (r) => y(0) - y(r.investimento)).attr('width', x.bandwidth()).attr('rx', 2)
+    .style('fill', (r) => (r.semana === lastW ? 'var(--qa-gold)' : r.semana === prevW ? 'var(--qa-blue-strong)' : 'var(--qa-blue)'))
+    .style('opacity', (r) => (recent.has(r.semana) ? 1 : 0.8))
+    .style('stroke', (r) => (r.semana === sel && !recent.has(r.semana) ? 'var(--qa-navy)' : null)).style('stroke-width', 2);
+  const allVals = x.step() >= 30;
+  g.filter((r) => allVals || recent.has(r.semana)).append('text').attr('class', 'qa-val')
+    .attr('x', x.bandwidth() / 2).attr('y', (r) => y(r.investimento) - 6).attr('text-anchor', 'middle')
+    .style('font-weight', (r) => (recent.has(r.semana) ? 700 : null))
+    .style('fill', (r) => (recent.has(r.semana) ? 'var(--color-fg)' : 'var(--cds-text-secondary)'))
+    .text((r) => qaFmt.mil(r.investimento));
+  const step = x.step() < 28 ? 2 : 1;
+  g.filter((r, i) => i % step === (rows.length - 1) % step).append('text').attr('x', x.bandwidth() / 2).attr('y', H - m.b + 18).attr('text-anchor', 'middle').text((r) => r.semana_num);
+  const tip = qaTip(el);
+  g.append('rect').attr('width', x.bandwidth()).attr('height', H).style('fill', 'transparent')
+    .on('pointermove', (ev, r) => tip.show(ev, qaWeekName(r.semana) + '\nInvestimento: ' + qaFmt.brl(r.investimento)))
+    .on('pointerleave', () => tip.hide());
+});
+
+dash.draw('tcustos', (tb) => {
+  const c = dash.data('custo_semana');
+  tb.replaceChildren();
+  if (c.status !== 'ok') return;
+  const sel = qaSel();
+  c.data.filter((r) => r.semana !== 'todas').slice().reverse().forEach((r) => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-key', qaKey(r.semana));
+    if (r.semana === sel) tr.style.fontWeight = '600';
+    qaCell(tr, String(r.semana_num), 'txt'); qaCell(tr, qaWeek(r.semana), 'txt');
+    qaCell(tr, qaFmt.brl(r.investimento)); qaCell(tr, qaFmt.int(r.leads)); qaCell(tr, qaFmt.int(r.qualificados));
+    qaCell(tr, r.cpl == null ? '—' : qaFmt.brl2(r.cpl)); qaCell(tr, r.cplq == null ? '—' : qaFmt.brl(r.cplq));
+    tb.append(tr);
+  });
+});
+</script>
+
+<p class="qa-foot">Kempinski Laje de Pedra · Comercial e Marketing · Atualizado em <span id="qa-upd"></span></p>
+</div>
+<script>document.getElementById('qa-upd').textContent = '09/11/2026'; dash._start();</script>
+</body>
+</html>
