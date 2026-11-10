@@ -1,0 +1,528 @@
+data_criacao,semana,campanha,publico,corretor,etapa,descartado,motivo,qualidade,ddd,uf,regiao,fonte
+2026-10-25,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Interessado,Não,,Desqualificado,44,PR,Sul,export 26/10/2026
+2026-10-25,2026-10-19,RS,RS | EXPLORADOR | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,51,RS,Sul,export 26/10/2026
+2026-10-25,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,22,RJ,Sudeste,export 26/10/2026
+2026-10-25,2026-10-19,RS,RS | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,15,SP,Sudeste,export 26/10/2026
+2026-10-25,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,28,ES,Sudeste,export 26/10/2026
+2026-10-25,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,,N/I,Não identificado,export 26/10/2026
+2026-10-25,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,33,MG,Sudeste,export 26/10/2026
+2026-10-25,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,62,GO,Centro-Oeste,export 26/10/2026
+2026-10-25,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Reunião realizada,Não,,Qualificado,12,SP,Sudeste,export 26/10/2026
+2026-10-25,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,35,MG,Sudeste,export 26/10/2026
+2026-10-25,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,54,RS,Sul,export 26/10/2026
+2026-10-25,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Investigação,Não,,Qualificado,62,GO,Centro-Oeste,export 26/10/2026
+2026-10-25,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,66,MT,Centro-Oeste,export 26/10/2026
+2026-10-25,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,16,SP,Sudeste,export 26/10/2026
+2026-10-24,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,34,MG,Sudeste,export 26/10/2026
+2026-10-24,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,45,PR,Sul,export 26/10/2026
+2026-10-24,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,51,RS,Sul,export 26/10/2026
+2026-10-24,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-24,2026-10-19,Site,Novo Site - Contato,Erika Fabiana Forloni,Interessado,Não,,Qualificado,55,RS,Sul,export 26/10/2026
+2026-10-24,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,79,SE,Nordeste,export 26/10/2026
+2026-10-24,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,19,SP,Sudeste,export 26/10/2026
+2026-10-24,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,79,SE,Nordeste,export 26/10/2026
+2026-10-24,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,12,SP,Sudeste,export 26/10/2026
+2026-10-24,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,19,SP,Sudeste,export 26/10/2026
+2026-10-24,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,47,SC,Sul,export 26/10/2026
+2026-10-24,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Investigação,Não,,Desqualificado,45,PR,Sul,export 26/10/2026
+2026-10-24,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,27,ES,Sudeste,export 26/10/2026
+2026-10-23,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM PERFIL,Desqualificado,22,RJ,Sudeste,export 26/10/2026
+2026-10-23,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-23,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Qualificado,55,RS,Sul,export 26/10/2026
+2026-10-23,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Reunião realizada,Não,,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-23,2026-10-19,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,55,RS,Sul,export 26/10/2026
+2026-10-23,2026-10-19,SP,SP | NF | LIFESTYLE,Julio Ramos,Interessado,Não,,Qualificado,98,MA,Nordeste,export 26/10/2026
+2026-10-23,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 26/10/2026
+2026-10-22,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,24,RJ,Sudeste,export 26/10/2026
+2026-10-22,2026-10-19,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Investigação,Não,,Qualificado,71,BA,Nordeste,export 26/10/2026
+2026-10-22,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,84,RN,Nordeste,export 26/10/2026
+2026-10-22,2026-10-19,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-22,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-22,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-22,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-22,2026-10-19,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,66,MT,Centro-Oeste,export 26/10/2026
+2026-10-21,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Interessado,Não,,Qualificado,95,RR,Norte,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,CLICK POR ENGANO,Desqualificado,38,MG,Sudeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,67,MS,Centro-Oeste,export 26/10/2026
+2026-10-21,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | NF | LIFESTYLE,Cindy Porto,Interessado,Não,,Qualificado,95,RR,Norte,export 26/10/2026
+2026-10-21,2026-10-19,Site,Novo Site - Contato,Tamires Carvalho,Interessado,Não,,Qualificado,62,GO,Centro-Oeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,71,BA,Nordeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-21,2026-10-19,SP,SP | NF | LIFESTYLE,Julio Ramos,Interessado,Não,,Qualificado,14,SP,Sudeste,export 26/10/2026
+2026-10-20,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Reunião realizada,Não,,Desqualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-20,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Katia Ramos,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,32,MG,Sudeste,export 26/10/2026
+2026-10-20,2026-10-19,RS,RS | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,88,CE,Nordeste,export 26/10/2026
+2026-10-20,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,44,PR,Sul,export 26/10/2026
+2026-10-20,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Reunião realizada,Não,,Desqualificado,73,BA,Nordeste,export 26/10/2026
+2026-10-20,2026-10-19,RS,RS | EXPLORADOR | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,88,CE,Nordeste,export 26/10/2026
+2026-10-20,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-20,2026-10-19,SP,SP | NF | LIFESTYLE,Cindy Porto,Investigação,Não,,Qualificado,77,BA,Nordeste,export 26/10/2026
+2026-10-20,2026-10-19,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,89,PI,Nordeste,export 26/10/2026
+2026-10-19,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,93,PA,Norte,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Qualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-19,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,88,CE,Nordeste,export 26/10/2026
+2026-10-19,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,67,MS,Centro-Oeste,export 26/10/2026
+2026-10-19,2026-10-19,Mista,MISTA | REMARKETING | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM INTERESSE,Desqualificado,74,BA,Nordeste,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,62,GO,Centro-Oeste,export 26/10/2026
+2026-10-19,2026-10-19,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,67,MS,Centro-Oeste,export 26/10/2026
+2026-10-19,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,53,RS,Sul,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-19,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 26/10/2026
+2026-10-19,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,27,ES,Sudeste,export 26/10/2026
+2026-10-19,2026-10-19,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Investigação,Não,,Qualificado,61,DF,Centro-Oeste,export 26/10/2026
+2026-10-19,2026-10-19,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,27,ES,Sudeste,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,41,PR,Sul,export 26/10/2026
+2026-10-19,2026-10-19,SP,SP | NF | WEALTH E PATRIMÔNIO,Cindy Porto,Interessado,Não,,Qualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Qualificado,63,TO,Norte,export 26/10/2026
+2026-10-18,2026-10-12,Site,Novo Site - Contato,Julio Ramos,Descartado,Sim,FORNECEDOR,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,SP,SP | EXPLORADOR | CONTEÚDO - NF,Katia Ramos,Descartado,Sim,SEM ORÇAMENTO,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-18,2026-10-12,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Katia Ramos,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,13,SP,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,16,SP,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM INTERESSE,Qualificado,91,PA,Norte,export 26/10/2026
+2026-10-18,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,79,SE,Nordeste,export 26/10/2026
+2026-10-18,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,66,MT,Centro-Oeste,export 26/10/2026
+2026-10-18,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Katia Ramos,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Qualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-18,2026-10-12,SP,SP | NF | LIFESTYLE,Katia Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-18,2026-10-12,SP,SP | NF | LIFESTYLE,Katia Ramos,Investigação,Não,,Qualificado,81,PE,Nordeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,66,MT,Centro-Oeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM PERFIL,Desqualificado,75,BA,Nordeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Interessado,Não,,Desqualificado,61,DF,Centro-Oeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Reunião realizada,Não,,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-17,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,55,RS,Sul,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,62,GO,Centro-Oeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Qualificado,16,SP,Sudeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,22,RJ,Sudeste,export 26/10/2026
+2026-10-17,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM INTERESSE,Desqualificado,44,PR,Sul,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,55,RS,Sul,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,85,CE,Nordeste,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Investigação,Não,,Qualificado,14,SP,Sudeste,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-16,2026-10-12,RS,RS | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,61,DF,Centro-Oeste,export 26/10/2026
+2026-10-16,2026-10-12,Site,Novo Site - Contato,Cindy Porto,Investigação,Não,,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,51,RS,Sul,export 26/10/2026
+2026-10-16,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,79,SE,Nordeste,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-16,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,73,BA,Nordeste,export 26/10/2026
+2026-10-16,2026-10-12,SP,SP | NF | LIFESTYLE,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,34,MG,Sudeste,export 26/10/2026
+2026-10-16,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,22,RJ,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Qualificado,67,MS,Centro-Oeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,41,PR,Sul,export 26/10/2026
+2026-10-15,2026-10-12,Mista,MISTA | REMARKETING | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM INTERESSE,Desqualificado,27,ES,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 26/10/2026
+2026-10-15,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,CLICK POR ENGANO,Desqualificado,34,MG,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,71,BA,Nordeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,66,MT,Centro-Oeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,41,PR,Sul,export 26/10/2026
+2026-10-15,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,49,SC,Sul,export 26/10/2026
+2026-10-15,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 26/10/2026
+2026-10-15,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,19,SP,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Qualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,CLICK POR ENGANO,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-15,2026-10-12,SP,SP | EXPLORADOR | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-14,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,81,PE,Nordeste,export 26/10/2026
+2026-10-14,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CLICK POR ENGANO,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-14,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,19,SP,Sudeste,export 26/10/2026
+2026-10-14,2026-10-12,Site,Novo Site - Contato,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Qualificado,92,AM,Norte,export 26/10/2026
+2026-10-14,2026-10-12,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Reunião realizada,Não,,Qualificado,86,PI,Nordeste,export 26/10/2026
+2026-10-14,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Investigação,Não,,Qualificado,19,SP,Sudeste,export 26/10/2026
+2026-10-14,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,84,RN,Nordeste,export 26/10/2026
+2026-10-14,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,48,SC,Sul,export 26/10/2026
+2026-10-14,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,CLICK POR ENGANO,Desqualificado,98,MA,Nordeste,export 26/10/2026
+2026-10-14,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-14,2026-10-12,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,86,PI,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,86,PI,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Reunião realizada,Não,,Qualificado,32,MG,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Descartado,Sim,TESTE - LEAD DUPLICADO,Desqualificado,81,PE,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,Mista,MISTA | REMARKETING | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,67,MS,Centro-Oeste,export 26/10/2026
+2026-10-13,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,22,RJ,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,22,RJ,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM INTERESSE,Desqualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Tamires Carvalho,Reunião realizada,Não,,Qualificado,73,BA,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,51,RS,Sul,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,49,SC,Sul,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,81,PE,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,Site,Novo Site - Contato,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Interessado,Não,,Qualificado,51,RS,Sul,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Desqualificado,51,RS,Sul,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Qualificado,83,PB,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,,N/I,Não identificado,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,85,CE,Nordeste,export 26/10/2026
+2026-10-13,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,21,RJ,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Interessado,Não,,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Reunião realizada,Não,,Qualificado,17,SP,Sudeste,export 26/10/2026
+2026-10-13,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Qualificado,85,CE,Nordeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,42,PR,Sul,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM INTERESSE,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Qualificado,84,RN,Nordeste,export 26/10/2026
+2026-10-12,2026-10-12,RS,RS | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,51,RS,Sul,export 26/10/2026
+2026-10-12,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Qualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,12,SP,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,Mista,MISTA | REMARKETING | CONTEÚDO,Cindy Porto,Descartado,Sim,CLICK POR ENGANO,Desqualificado,75,BA,Nordeste,export 26/10/2026
+2026-10-12,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Qualificado,34,MG,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | NF | LIFESTYLE,Julio Ramos,Reunião realizada,Não,,Qualificado,64,GO,Centro-Oeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,35,MG,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,24,RJ,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | NF | LIFESTYLE,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Interessado,Não,,Desqualificado,64,GO,Centro-Oeste,export 26/10/2026
+2026-10-12,2026-10-12,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,31,MG,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,11,SP,Sudeste,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,41,PR,Sul,export 26/10/2026
+2026-10-12,2026-10-12,SP,SP | EXPLORADOR | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 26/10/2026
+2026-10-12,2026-10-12,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,35,MG,Sudeste,export 26/10/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,14,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-11-01,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,32,MG,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,86,PI,Nordeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,99,MA,Nordeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Reunião realizada,Não,,Qualificado,41,PR,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,32,MG,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,24,RJ,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,79,SE,Nordeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,18,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,55,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,44,PR,Sul,export 02/11/2026
+2026-11-01,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Interessado,Não,,Qualificado,21,RJ,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,35,MG,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Reunião realizada,Não,,Qualificado,17,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,19,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,66,MT,Centro-Oeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,51,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,55,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,55,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,54,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,91,PA,Norte,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,15,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,47,SC,Sul,export 02/11/2026
+2026-11-01,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Qualificado,22,RJ,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,18,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,91,PA,Norte,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,54,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,19,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,71,BA,Nordeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,61,DF,Centro-Oeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,61,DF,Centro-Oeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,71,BA,Nordeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,27,ES,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Qualificado,21,RJ,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,48,SC,Sul,export 02/11/2026
+2026-11-01,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,51,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,45,PR,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,13,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,27,ES,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,13,SP,Sudeste,export 02/11/2026
+2026-11-01,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-11-01,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,65,MT,Centro-Oeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,54,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,81,PE,Nordeste,export 02/11/2026
+2026-10-31,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Tamires Carvalho,Reunião realizada,Não,,Desqualificado,55,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,98,MA,Nordeste,export 02/11/2026
+2026-10-31,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,24,RJ,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Reunião realizada,Não,,Desqualificado,61,DF,Centro-Oeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,47,SC,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | NF | LIFESTYLE,Julio Ramos,Investigação,Não,,Qualificado,65,MT,Centro-Oeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,81,PE,Nordeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,62,GO,Centro-Oeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,53,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,92,AM,Norte,export 02/11/2026
+2026-10-31,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Investigação,Não,,Qualificado,61,DF,Centro-Oeste,export 02/11/2026
+2026-10-31,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,54,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | NF | LIFESTYLE,Julio Ramos,Interessado,Não,,Qualificado,98,MA,Nordeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,35,MG,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | NF | LIFESTYLE,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,27,ES,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Investigação,Não,,Qualificado,16,SP,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,33,MG,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,98,MA,Nordeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,47,SC,Sul,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-31,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-31,2026-10-26,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,47,SC,Sul,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,51,RS,Sul,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,19,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,55,RS,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,65,MT,Centro-Oeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,19,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM INTERESSE,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,CLICK POR ENGANO,Desqualificado,15,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,69,RO,Norte,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | NF | LIFESTYLE,Cindy Porto,Interessado,Não,,Qualificado,71,BA,Nordeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,48,SC,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Investigação,Não,,Desqualificado,37,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-10-30,2026-10-26,Site,Novo Site - Contato,Cindy Porto,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,27,ES,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,81,PE,Nordeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,51,RS,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Investigação,Não,,Qualificado,47,SC,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,18,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,48,SC,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,53,RS,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | NF | WEALTH E PATRIMÔNIO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,69,RO,Norte,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Desqualificado,48,SC,Sul,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | NF | LIFESTYLE,Julio Ramos,Investigação,Não,,Qualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,91,PA,Norte,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,16,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Qualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,34,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,22,RJ,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Qualificado,79,SE,Nordeste,export 02/11/2026
+2026-10-30,2026-10-26,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,15,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Desqualificado,13,SP,Sudeste,export 02/11/2026
+2026-10-30,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Tamires Carvalho,Investigação,Não,,Desqualificado,37,MG,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,71,BA,Nordeste,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,84,RN,Nordeste,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,31,MG,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,53,RS,Sul,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,22,RJ,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Desqualificado,48,SC,Sul,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,54,RS,Sul,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Reunião realizada,Não,,Qualificado,19,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,34,MG,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Investigação,Não,,Qualificado,74,BA,Nordeste,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,91,PA,Norte,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,82,AL,Nordeste,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,55,RS,Sul,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,51,RS,Sul,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,94,PA,Norte,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Investigação,Não,,Qualificado,45,PR,Sul,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,33,MG,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Reunião realizada,Não,,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,17,SP,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,22,RJ,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,65,MT,Centro-Oeste,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,91,PA,Norte,export 02/11/2026
+2026-10-29,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-29,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,54,RS,Sul,export 02/11/2026
+2026-10-28,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Desqualificado,67,MS,Centro-Oeste,export 02/11/2026
+2026-10-28,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,69,RO,Norte,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,12,SP,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,17,SP,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Qualificado,17,SP,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,73,BA,Nordeste,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Interessado,Não,,Qualificado,51,RS,Sul,export 02/11/2026
+2026-10-28,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,62,GO,Centro-Oeste,export 02/11/2026
+2026-10-28,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,71,BA,Nordeste,export 02/11/2026
+2026-10-28,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,47,SC,Sul,export 02/11/2026
+2026-10-28,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,47,SC,Sul,export 02/11/2026
+2026-10-28,2026-10-26,SP,SP | NF | LIFESTYLE,Cindy Porto,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-28,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,24,RJ,Sudeste,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,84,RN,Nordeste,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Interessado,Não,,Qualificado,81,PE,Nordeste,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Qualificado,85,CE,Nordeste,export 02/11/2026
+2026-10-27,2026-10-26,Site,Novo Site - Contato,Erika Fabiana Forloni,Reunião realizada,Não,,Qualificado,46,PR,Sul,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,41,PR,Sul,export 02/11/2026
+2026-10-27,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Desqualificado,77,BA,Nordeste,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Reunião realizada,Não,,Qualificado,61,DF,Centro-Oeste,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,83,PB,Nordeste,export 02/11/2026
+2026-10-27,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,24,RJ,Sudeste,export 02/11/2026
+2026-10-27,2026-10-26,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,21,RJ,Sudeste,export 02/11/2026
+2026-10-26,2026-10-26,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,62,GO,Centro-Oeste,export 02/11/2026
+2026-10-26,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-10-26,2026-10-26,Mista,MISTA | REMARKETING | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,35,MG,Sudeste,export 02/11/2026
+2026-10-26,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 02/11/2026
+2026-10-26,2026-10-26,SP,SP | NF | WEALTH E PATRIMÔNIO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,14,SP,Sudeste,export 02/11/2026
+2026-10-26,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Interessado,Não,,Desqualificado,17,SP,Sudeste,export 02/11/2026
+2026-10-26,2026-10-26,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Interessado,Não,,Desqualificado,11,SP,Sudeste,export 02/11/2026
+2026-10-26,2026-10-26,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,11,SP,Sudeste,export 02/11/2026
+2026-11-08,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,24,RJ,Sudeste,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Investigação,Não,,Desqualificado,55,RS,Sul,export 09/11/2026
+2026-11-08,2026-11-02,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Investigação,Não,,Desqualificado,27,ES,Sudeste,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,47,SC,Sul,export 09/11/2026
+2026-11-08,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Desqualificado,71,BA,Nordeste,export 09/11/2026
+2026-11-08,2026-11-02,SP,SP | NF | LIFESTYLE,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,43,PR,Sul,export 09/11/2026
+2026-11-08,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,24,RJ,Sudeste,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,48,SC,Sul,export 09/11/2026
+2026-11-08,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,12,SP,Sudeste,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-08,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,41,PR,Sul,export 09/11/2026
+2026-11-07,2026-11-02,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Interessado,Não,,Qualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-07,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-07,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,84,RN,Nordeste,export 09/11/2026
+2026-11-07,2026-11-02,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,85,CE,Nordeste,export 09/11/2026
+2026-11-07,2026-11-02,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Interessado,Não,,Qualificado,51,RS,Sul,export 09/11/2026
+2026-11-07,2026-11-02,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Desqualificado,47,SC,Sul,export 09/11/2026
+2026-11-07,2026-11-02,Sem campanha,Sem mídia atribuída,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,33,MG,Sudeste,export 09/11/2026
+2026-11-07,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,88,CE,Nordeste,export 09/11/2026
+2026-11-07,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Mariele Kaczanoski,Investigação,Não,,Qualificado,51,RS,Sul,export 09/11/2026
+2026-11-07,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,31,MG,Sudeste,export 09/11/2026
+2026-11-07,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,14,SP,Sudeste,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Qualificado,81,PE,Nordeste,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-06,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,92,AM,Norte,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Desqualificado,35,MG,Sudeste,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | NF | WEALTH E PATRIMÔNIO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,87,PE,Nordeste,export 09/11/2026
+2026-11-06,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,79,SE,Nordeste,export 09/11/2026
+2026-11-06,2026-11-02,RS,RS | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Desqualificado,98,MA,Nordeste,export 09/11/2026
+2026-11-06,2026-11-02,RS,RS | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-06,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,73,BA,Nordeste,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | NF | LIFESTYLE,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,75,BA,Nordeste,export 09/11/2026
+2026-11-06,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 09/11/2026
+2026-11-06,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 09/11/2026
+2026-11-06,2026-11-02,SP,SP | NF | LIFESTYLE,Cindy Porto,Investigação,Não,,Desqualificado,34,MG,Sudeste,export 09/11/2026
+2026-11-06,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,53,RS,Sul,export 09/11/2026
+2026-11-05,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-05,2026-11-02,Site,Novo Site - Contato,Cindy Porto,Investigação,Não,,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-05,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,69,RO,Norte,export 09/11/2026
+2026-11-05,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-05,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,18,SP,Sudeste,export 09/11/2026
+2026-11-05,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,CLICK POR ENGANO,Desqualificado,82,AL,Nordeste,export 09/11/2026
+2026-11-05,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,75,BA,Nordeste,export 09/11/2026
+2026-11-05,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,44,PR,Sul,export 09/11/2026
+2026-11-05,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Investigação,Não,,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-05,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-05,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,82,AL,Nordeste,export 09/11/2026
+2026-11-04,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Investigação,Não,,Qualificado,51,RS,Sul,export 09/11/2026
+2026-11-04,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | NF | LIFESTYLE,Cindy Porto,Investigação,Não,,Qualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Interessado,Não,,Qualificado,16,SP,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 09/11/2026
+2026-11-04,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,81,PE,Nordeste,export 09/11/2026
+2026-11-04,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Investigação,Não,,Desqualificado,32,MG,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,22,RJ,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM PERFIL,Desqualificado,81,PE,Nordeste,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM INTERESSE,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Qualificado,38,MG,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Cindy Porto,Reunião realizada,Não,,Qualificado,61,DF,Centro-Oeste,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,65,MT,Centro-Oeste,export 09/11/2026
+2026-11-04,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,67,MS,Centro-Oeste,export 09/11/2026
+2026-11-04,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Investigação,Não,,Qualificado,61,DF,Centro-Oeste,export 09/11/2026
+2026-11-04,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Qualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,31,MG,Sudeste,export 09/11/2026
+2026-11-04,2026-11-02,Site,Novo Site - Contato,Cindy Porto,Descartado,Sim,SEM PERFIL,Desqualificado,53,RS,Sul,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,62,GO,Centro-Oeste,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,86,PI,Nordeste,export 09/11/2026
+2026-11-04,2026-11-02,SP,SP | NF | WEALTH E PATRIMÔNIO,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,16,SP,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,44,PR,Sul,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,21,RJ,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,47,SC,Sul,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,44,PR,Sul,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,49,SC,Sul,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,44,PR,Sul,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,,N/I,Não identificado,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,88,CE,Nordeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | EXPLORADOR | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,53,RS,Sul,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,75,BA,Nordeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Qualificado,81,PE,Nordeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | NF | LIFESTYLE,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,13,SP,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,Sem campanha,Sem mídia atribuída,Erika Fabiana Forloni,Interessado,Não,,Qualificado,67,MS,Centro-Oeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Investigação,Não,,Qualificado,16,SP,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,84,RN,Nordeste,export 09/11/2026
+2026-11-03,2026-11-02,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,91,PA,Norte,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Desqualificado,47,SC,Sul,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,21,RJ,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,62,GO,Centro-Oeste,export 09/11/2026
+2026-11-03,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,67,MS,Centro-Oeste,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-03,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Interessado,Não,,Qualificado,61,DF,Centro-Oeste,export 09/11/2026
+2026-11-03,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Interessado,Não,,Desqualificado,21,RJ,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,88,CE,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | NF | LIFESTYLE,Cindy Porto,Interessado,Não,,Qualificado,37,MG,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Cindy Porto,Reunião realizada,Não,,Qualificado,48,SC,Sul,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,98,MA,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | EXPLORADOR | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,14,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,86,PI,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,14,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,62,GO,Centro-Oeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Desqualificado,22,RJ,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-02,2026-11-02,Site,Novo Site - Contato,Erika Fabiana Forloni,Interessado,Não,,Desqualificado,31,MG,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM PERFIL,Desqualificado,83,PB,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,92,AM,Norte,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,21,RJ,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,22,RJ,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,17,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,32,MG,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,16,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,19,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,,N/I,Não identificado,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,61,DF,Centro-Oeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,16,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,34,MG,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Desqualificado,54,RS,Sul,export 09/11/2026
+2026-11-02,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Tamires Carvalho,Interessado,Não,,Qualificado,77,BA,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,75,BA,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,32,MG,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,21,RJ,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,44,PR,Sul,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,27,ES,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Descartado,Sim,SEM PERFIL,Desqualificado,19,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,49,SC,Sul,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | NF | LIFESTYLE,Julio Ramos,Investigação,Não,,Qualificado,84,RN,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | GUARDIÕES DA MEMÓRIA | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,CLICK POR ENGANO,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Reunião realizada,Não,,Desqualificado,12,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,11,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,73,BA,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,51,RS,Sul,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,18,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,48,SC,Sul,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Interessado,Não,,Qualificado,62,GO,Centro-Oeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Desqualificado,79,SE,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,19,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,85,CE,Nordeste,export 09/11/2026
+2026-11-02,2026-11-02,Mista,MISTA | REMARKETING | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM INTERESSE,Desqualificado,61,DF,Centro-Oeste,export 09/11/2026
+2026-11-02,2026-11-02,RS,RS | LOOKALIKE | CONTEÚDO,Erika Fabiana Forloni,Descartado,Sim,SEM PERFIL,Desqualificado,14,SP,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Erika Fabiana Forloni,Descartado,Sim,NUNCA INTERAGIU,Desqualificado,35,MG,Sudeste,export 09/11/2026
+2026-11-02,2026-11-02,SP,SP | NF | LIFESTYLE,Cindy Porto,Descartado,Sim,SEM INTERESSE,Qualificado,31,MG,Sudeste,export 09/11/2026
