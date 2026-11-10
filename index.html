@@ -328,12 +328,12 @@ window.dash = (function () {
 
   <section class="qa-panel" id="comparacao" role="tabpanel" aria-labelledby="aba-comparacao" hidden>
     <div class="qa-compbar" id="filtro-comparacao">
-      <label class="qa-cfilter" for="qa-comp-a">Semana A
-        <select id="qa-comp-a" class="dash-select" data-draw="compa" aria-label="Semana A" data-source="kpi_semana"></select>
+      <label class="qa-cfilter" for="qa-comp-a">Semana base
+        <select id="qa-comp-a" class="dash-select" data-draw="compa" aria-label="Semana base" data-source="kpi_semana"></select>
       </label>
       <span class="qa-vsword">comparada com</span>
-      <label class="qa-cfilter" for="qa-comp-b">Semana B
-        <select id="qa-comp-b" class="dash-select" data-draw="compb" aria-label="Semana B" data-source="kpi_semana"></select>
+      <label class="qa-cfilter" for="qa-comp-b">Semana comparada
+        <select id="qa-comp-b" class="dash-select" data-draw="compb" aria-label="Semana comparada" data-source="kpi_semana"></select>
       </label>
     </div>
     <p class="qa-note qa-ifsame">Escolha duas semanas diferentes para comparar.</p>
@@ -345,7 +345,7 @@ window.dash = (function () {
         <div class="qa-card">
           <div class="qa-tablewrap">
             <table class="qa-table qa-ctable qa-kcomp" id="tabela-comp-indicadores">
-              <thead><tr><th class="txt">Indicador</th><th>Semana A</th><th class="qa-cur">Semana B</th><th>Variação</th></tr></thead>
+              <thead><tr><th class="txt">Indicador</th><th><span data-draw="wfa">—</span></th><th class="qa-cur"><span data-draw="wfb">—</span></th><th>Variação</th></tr></thead>
               <tbody>
                 <tr><td class="txt">Leads recebidos</td><td><span data-draw="kc" data-source="comp_kpi" data-field="leads_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="leads_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_leads" data-fmt="rel" data-good="up">—</span></td></tr>
                 <tr><td class="txt">Qualificados</td><td><span data-draw="kc" data-source="comp_kpi" data-field="qualificados_a">—</span></td><td class="qa-cur"><span data-draw="kc" data-source="comp_kpi" data-field="qualificados_b">—</span></td><td><span data-draw="kc" data-source="comp_kpi" data-field="var_qualificados" data-fmt="rel" data-good="up">—</span></td></tr>
@@ -361,14 +361,14 @@ window.dash = (function () {
 
       <section class="qa-section" id="comp-campanhas">
         <h2 class="qa-h2">Qualificação por campanha</h2>
-        <div class="qa-legend"><span><i class="qa-sw qa-sw-muted"></i>Semana A</span><span><i class="qa-sw qa-sw-main"></i>Semana B</span></div>
+        <div class="qa-legend"><span><i class="qa-sw qa-sw-muted"></i><span data-draw="wfa">—</span></span><span><i class="qa-sw qa-sw-main"></i><span data-draw="wfb">—</span></span></div>
         <div class="qa-card">
           <div class="qa-chart dash-skeleton" id="grafico-comp-campanhas" data-draw="dumb" data-source="comp_campanha"></div>
         </div>
         <div class="qa-card">
         <div class="qa-tablewrap">
           <table class="qa-table qa-ctable" id="tabela-comp-campanhas" data-source="comp_campanha" data-row-key="semana_a,semana_b,campanha">
-            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th data-field="leads_a">Leads <span data-draw="wna">—</span></th><th class="qa-cur" data-field="leads_b">Leads <span data-draw="wnb">—</span></th><th data-field="pct_a">% Qualif. <span data-draw="wna">—</span></th><th class="qa-cur" data-field="pct_b">% Qualif. <span data-draw="wnb">—</span></th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões <span data-draw="wna">—</span></th><th class="qa-cur" data-field="reunioes_b">Reuniões <span data-draw="wnb">—</span></th></tr></thead>
             <tbody data-draw="comp_campanha"></tbody>
           </table>
         </div>
@@ -385,7 +385,7 @@ window.dash = (function () {
         <div class="qa-card">
         <div class="qa-tablewrap">
           <table class="qa-table qa-ctable" id="tabela-comp-publicos" data-source="comp_publico" data-row-key="semana_a,semana_b,publico">
-            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th class="txt" data-field="publico">Público</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th class="txt" data-field="publico">Público</th><th data-field="leads_a">Leads <span data-draw="wna">—</span></th><th class="qa-cur" data-field="leads_b">Leads <span data-draw="wnb">—</span></th><th data-field="pct_a">% Qualif. <span data-draw="wna">—</span></th><th class="qa-cur" data-field="pct_b">% Qualif. <span data-draw="wnb">—</span></th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões <span data-draw="wna">—</span></th><th class="qa-cur" data-field="reunioes_b">Reuniões <span data-draw="wnb">—</span></th></tr></thead>
             <tbody data-draw="comp_publico"></tbody>
           </table>
         </div>
@@ -397,7 +397,7 @@ window.dash = (function () {
         <div class="qa-card">
         <div class="qa-tablewrap">
           <table class="qa-table qa-ctable" id="tabela-comp-regioes" data-source="comp_regiao" data-row-key="semana_a,semana_b,regiao">
-            <thead><tr><th class="txt" data-field="regiao">Região</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <thead><tr><th class="txt" data-field="regiao">Região</th><th data-field="leads_a">Leads <span data-draw="wna">—</span></th><th class="qa-cur" data-field="leads_b">Leads <span data-draw="wnb">—</span></th><th data-field="pct_a">% Qualif. <span data-draw="wna">—</span></th><th class="qa-cur" data-field="pct_b">% Qualif. <span data-draw="wnb">—</span></th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões <span data-draw="wna">—</span></th><th class="qa-cur" data-field="reunioes_b">Reuniões <span data-draw="wnb">—</span></th></tr></thead>
             <tbody data-draw="comp_regiao"></tbody>
           </table>
         </div>
@@ -409,7 +409,7 @@ window.dash = (function () {
         <div class="qa-card">
         <div class="qa-tablewrap">
           <table class="qa-table qa-ctable" id="tabela-comp-corretores" data-source="comp_corretor" data-row-key="semana_a,semana_b,corretor">
-            <thead><tr><th class="txt" data-field="corretor">Corretor</th><th data-field="leads_a">Leads A</th><th class="qa-cur" data-field="leads_b">Leads B</th><th data-field="pct_a">% Qualif. A</th><th class="qa-cur" data-field="pct_b">% Qualif. B</th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões A</th><th class="qa-cur" data-field="reunioes_b">Reuniões B</th></tr></thead>
+            <thead><tr><th class="txt" data-field="corretor">Corretor</th><th data-field="leads_a">Leads <span data-draw="wna">—</span></th><th class="qa-cur" data-field="leads_b">Leads <span data-draw="wnb">—</span></th><th data-field="pct_a">% Qualif. <span data-draw="wna">—</span></th><th class="qa-cur" data-field="pct_b">% Qualif. <span data-draw="wnb">—</span></th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões <span data-draw="wna">—</span></th><th class="qa-cur" data-field="reunioes_b">Reuniões <span data-draw="wnb">—</span></th></tr></thead>
             <tbody data-draw="comp_corretor"></tbody>
           </table>
         </div>
@@ -489,7 +489,7 @@ window.dash = (function () {
       <li>As semanas de 12/10 e 19/10 vêm do export de 26/10; as etapas e classificações desses leads são as daquela data.</li>
       <li>Qualificado e Desqualificado seguem a classificação "Qualidade Assertiva" do CRM. Descartados são os leads com Descartado = Sim.</li>
       <li>Avançados: leads em Interessado ou Reunião realizada. Nenhum lead do período chegou a proposta.</li>
-      <li>Comparação da semana: escolha a Semana A e a Semana B; as variações mostram B em relação a A, e a variação da qualificação é dada em pontos percentuais (p.p.).</li>
+      <li>Comparação da semana: escolha a semana base e a semana comparada; as variações mostram a semana comparada em relação à base, e a variação da qualificação é dada em pontos percentuais (p.p.).</li>
       <li>Região: DDD do telefone cruzado com o plano de numeração da Anatel. Telefones fora do padrão de 10 ou 11 dígitos ficam como "Não identificado".</li>
     </ul>
   </details>
@@ -1140,6 +1140,10 @@ dash.draw('compb', (el) => qaWeekSelect(el, 'b'));
 dash.draw('wa', (el) => { const pr = qaPair(); el.textContent = pr ? qaWeekName(pr.a) : '—'; });
 dash.draw('wb', (el) => { const pr = qaPair(); el.textContent = pr ? qaWeekName(pr.b) : '—'; });
 dash.draw('mincomp', (el) => { el.textContent = String(QA_MIN_COMP); });
+dash.draw('wna', (el) => { const pr = qaPair(); el.textContent = pr ? 'Sem. ' + qaWeekNum(pr.a) : '—'; });
+dash.draw('wnb', (el) => { const pr = qaPair(); el.textContent = pr ? 'Sem. ' + qaWeekNum(pr.b) : '—'; });
+dash.draw('wfa', (el) => { const pr = qaPair(); el.textContent = pr ? 'Semana ' + qaWeekNum(pr.a) : '—'; });
+dash.draw('wfb', (el) => { const pr = qaPair(); el.textContent = pr ? 'Semana ' + qaWeekNum(pr.b) : '—'; });
 const qaPairRows = (src) => {
   const d = dash.data(src), pr = qaPair();
   if (d.status !== 'ok' || !pr) return null;
@@ -1219,7 +1223,7 @@ dash.draw('dumb', (el) => {
   if (!rows.length) { const p = document.createElement('p'); p.className = 'qa-sub'; p.textContent = 'Sem dados para comparar.'; el.append(p); return; }
   const W = Math.max(el.clientWidth || 0, 280), rowH = 40, top = 26, H = top + rows.length * rowH + 4;
   const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H).attr('role', 'img')
-    .attr('aria-label', 'Percentual de qualificação por campanha na Semana A e na Semana B');
+    .attr('aria-label', 'Percentual de qualificação por campanha na semana base e na semana comparada');
   const lab = (d) => (d.pct_a == null ? '—' : qaFmt.pct(d.pct_a)) + ' → ' + (d.pct_b == null ? '—' : qaFmt.pct(d.pct_b));
   const tmp = svg.append('g'); let lw = 0, vw = 0;
   rows.forEach((r) => {
@@ -1242,7 +1246,7 @@ dash.draw('dumb', (el) => {
   g.append('text').attr('class', 'qa-val').attr('x', x.range()[1] + 14).attr('dy', '0.35em').text(lab);
   const tip = qaTip(el);
   g.append('rect').attr('x', 0).attr('y', -rowH / 2).attr('width', W).attr('height', rowH).style('fill', 'transparent')
-    .on('pointermove', (ev, d) => tip.show(ev, d.campanha + '\nSemana A — ' + qaWeekName(d.semana_a) + ': ' + (d.pct_a == null ? '—' : qaFmt.pct(d.pct_a)) + ' (' + qaFmt.int(d.qualificados_a) + ' de ' + qaFmt.int(d.leads_a) + ')\nSemana B — ' + qaWeekName(d.semana_b) + ': ' + (d.pct_b == null ? '—' : qaFmt.pct(d.pct_b)) + ' (' + qaFmt.int(d.qualificados_b) + ' de ' + qaFmt.int(d.leads_b) + ')' + (d.var_pp == null ? '' : '\nVariação: ' + qaFmt.pp(d.var_pp))))
+    .on('pointermove', (ev, d) => tip.show(ev, d.campanha + '\n' + qaWeekName(d.semana_a) + ': ' + (d.pct_a == null ? '—' : qaFmt.pct(d.pct_a)) + ' (' + qaFmt.int(d.qualificados_a) + ' de ' + qaFmt.int(d.leads_a) + ')\n' + qaWeekName(d.semana_b) + ': ' + (d.pct_b == null ? '—' : qaFmt.pct(d.pct_b)) + ' (' + qaFmt.int(d.qualificados_b) + ' de ' + qaFmt.int(d.leads_b) + ')' + (d.var_pp == null ? '' : '\nVariação: ' + qaFmt.pp(d.var_pp))))
     .on('pointerleave', () => tip.hide());
 });
 // Custos
@@ -1396,6 +1400,6 @@ dash.draw('tcustos', (tb) => {
 
 <p class="qa-foot">Kempinski Laje de Pedra · Comercial e Marketing · Atualizado em <span id="qa-upd"></span></p>
 </div>
-<script>document.getElementById('qa-upd').textContent = '09/11/2026'; dash._start();</script>
+<script>document.getElementById('qa-upd').textContent = '10/11/2026'; dash._start();</script>
 </body>
 </html>
