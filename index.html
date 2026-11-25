@@ -290,28 +290,6 @@ window.dash = (function () {
     </div>
   </section>
 
-  <section class="qa-section" id="regiao">
-    <h2 class="qa-h2">Região do cliente pelo DDD</h2>
-    <p class="qa-sub">A região vem do DDD do telefone do lead, que indica a origem da linha e nem sempre onde a pessoa mora.</p>
-    <div class="qa-legend"><span><i class="qa-sw qa-sw-alto"></i>Qualificação de <b data-draw="limalto">—</b> ou mais</span><span><i class="qa-sw qa-sw-medio"></i>Intermediária</span><span><i class="qa-sw qa-sw-baixo"></i>Abaixo de <b data-draw="limbaixo">—</b></span></div>
-    <div class="qa-grid2">
-      <div class="qa-card" id="card-regiao">
-        <h3 class="qa-h3">% de qualificação por região</h3>
-        <div class="qa-chart dash-skeleton" id="grafico-regiao" data-draw="hreg" data-source="por_regiao"></div>
-      </div>
-      <div class="qa-card" id="card-aderencia">
-        <h3 class="qa-h3">Aderência geográfica das campanhas regionais</h3>
-        <p class="qa-sub">Quantos leads de cada campanha têm DDD do próprio estado.</p>
-        <div class="qa-tablewrap">
-          <table class="qa-table" id="tabela-aderencia" data-source="aderencia" data-row-key="semana,campanha">
-            <thead><tr><th class="txt" data-field="campanha">Campanha</th><th data-field="leads">Leads</th><th data-field="leads_estado">DDD do estado</th><th data-field="pct_aderencia">% aderência</th><th data-field="qualificados_estado">Qualificados do estado</th></tr></thead>
-            <tbody data-draw="tade"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="qa-section" id="corretores">
     <h2 class="qa-h2">Corretores</h2>
     <div class="qa-card">
