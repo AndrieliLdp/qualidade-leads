@@ -180,6 +180,11 @@ window.dash = (function () {
 .qa-ctable td.qa-cur, .qa-ctable th.qa-cur { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
 .qa-ctable td.good { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
 .qa-ctable td.bad { color: var(--color-bad); font-weight: var(--cds-font-weight-medium); }
+.qa-ctable thead th.qa-cur { color: var(--qa-on-navy); }
+.qa-fit th, .qa-fit td { padding: 8px 6px; }
+.qa-fit thead th { white-space: normal; line-height: 1.25; vertical-align: bottom; }
+.qa-fit td.txt { white-space: normal; }
+.qa-fit td:nth-child(2) { min-width: 200px; }
 .qa-kcomp td span.good { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
 .qa-kcomp td span.bad { color: var(--color-bad); font-weight: var(--cds-font-weight-medium); }
 .qa-moves { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
@@ -362,21 +367,9 @@ window.dash = (function () {
         </div>
         <div class="qa-card">
         <div class="qa-tablewrap">
-          <table class="qa-table qa-ctable" id="tabela-comp-publicos" data-source="comp_publico" data-row-key="semana_a,semana_b,publico">
+          <table class="qa-table qa-ctable qa-fit" id="tabela-comp-publicos" data-source="comp_publico" data-row-key="semana_a,semana_b,publico">
             <thead><tr><th class="txt" data-field="campanha">Campanha</th><th class="txt" data-field="publico">Público</th><th data-field="leads_a">Leads <span data-draw="wna">—</span></th><th class="qa-cur" data-field="leads_b">Leads <span data-draw="wnb">—</span></th><th data-field="pct_a">% Qualif. <span data-draw="wna">—</span></th><th class="qa-cur" data-field="pct_b">% Qualif. <span data-draw="wnb">—</span></th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões <span data-draw="wna">—</span></th><th class="qa-cur" data-field="reunioes_b">Reuniões <span data-draw="wnb">—</span></th></tr></thead>
             <tbody data-draw="comp_publico"></tbody>
-          </table>
-        </div>
-        </div>
-      </section>
-
-      <section class="qa-section" id="comp-regioes">
-        <h2 class="qa-h2">Regiões (DDD)</h2>
-        <div class="qa-card">
-        <div class="qa-tablewrap">
-          <table class="qa-table qa-ctable" id="tabela-comp-regioes" data-source="comp_regiao" data-row-key="semana_a,semana_b,regiao">
-            <thead><tr><th class="txt" data-field="regiao">Região</th><th data-field="leads_a">Leads <span data-draw="wna">—</span></th><th class="qa-cur" data-field="leads_b">Leads <span data-draw="wnb">—</span></th><th data-field="pct_a">% Qualif. <span data-draw="wna">—</span></th><th class="qa-cur" data-field="pct_b">% Qualif. <span data-draw="wnb">—</span></th><th data-field="var_pp">Variação</th><th data-field="reunioes_a">Reuniões <span data-draw="wna">—</span></th><th class="qa-cur" data-field="reunioes_b">Reuniões <span data-draw="wnb">—</span></th></tr></thead>
-            <tbody data-draw="comp_regiao"></tbody>
           </table>
         </div>
         </div>
