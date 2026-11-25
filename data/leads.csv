@@ -689,3 +689,29 @@ data_criacao,semana,campanha,publico,corretor,etapa,descartado,motivo,qualidade,
 2026-11-16,2026-11-16,SP,SP | EXPLORADOR | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,82,AL,Nordeste,export 23/11/2026
 2026-11-16,2026-11-16,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Tamires Carvalho,Descartado,Sim,SEM PERFIL,Desqualificado,16,SP,Sudeste,export 23/11/2026
 2026-11-16,2026-11-16,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Descartado,Sim,IDOSO - CLICK POR ENGANO,Desqualificado,51,RS,Sul,export 23/11/2026
+2026-11-25,2026-11-23,Mista,MISTA | REMARKETING | CONTEÚDO,Mariele Kaczanoski,Novo lead,Não,,Desqualificado,61,DF,Centro-Oeste,export 25/11/2026
+2026-11-25,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,11,SP,Sudeste,export 25/11/2026
+2026-11-25,2026-11-23,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Qualificado,73,BA,Nordeste,export 25/11/2026
+2026-11-25,2026-11-23,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Investigação,Não,,Qualificado,15,SP,Sudeste,export 25/11/2026
+2026-11-25,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,54,RS,Sul,export 25/11/2026
+2026-11-25,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,67,MS,Centro-Oeste,export 25/11/2026
+2026-11-24,2026-11-23,SP,SP | EXPLORADOR | CONTEÚDO - NF,Julio Ramos,Interessado,Não,,Desqualificado,47,SC,Sul,export 25/11/2026
+2026-11-24,2026-11-23,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Investigação,Não,,Desqualificado,21,RJ,Sudeste,export 25/11/2026
+2026-11-24,2026-11-23,RS,RS | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,53,RS,Sul,export 25/11/2026
+2026-11-24,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,27,ES,Sudeste,export 25/11/2026
+2026-11-24,2026-11-23,SP,SP | NF | LIFESTYLE,Erika Fabiana Forloni,Investigação,Não,,Desqualificado,85,CE,Nordeste,export 25/11/2026
+2026-11-24,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,41,PR,Sul,export 25/11/2026
+2026-11-23,2026-11-23,SP,SP | NF | WEALTH E PATRIMÔNIO,Erika Fabiana Forloni,Descartado,Sim,CONTATO INVÁLIDO,Desqualificado,18,SP,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Desqualificado,21,RJ,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,SP,SP | NF | LIFESTYLE,Mariele Kaczanoski,Descartado,Sim,SEM PERFIL,Desqualificado,31,MG,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Julio Ramos,Investigação,Não,,Qualificado,61,DF,Centro-Oeste,export 25/11/2026
+2026-11-23,2026-11-23,SC,SC | PATRIMONIAL | CONTEÚDO - NF,Cindy Porto,Interessado,Não,,Qualificado,41,PR,Sul,export 25/11/2026
+2026-11-23,2026-11-23,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Mariele Kaczanoski,Interessado,Não,,Desqualificado,54,RS,Sul,export 25/11/2026
+2026-11-23,2026-11-23,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,11,SP,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,SC,SC | ALTOS EXECUTIVOS | CONTEÚDO,Cindy Porto,Investigação,Não,,Desqualificado,92,AM,Norte,export 25/11/2026
+2026-11-23,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Investigação,Não,,Qualificado,19,SP,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,RS,RS | LOOKALIKE | CONTEÚDO,Cindy Porto,Descartado,Sim,SEM INTERESSE,Desqualificado,11,SP,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Qualificado,16,SP,Sudeste,export 25/11/2026
+2026-11-23,2026-11-23,SP,SP | PATRIMONIAL | CONTEÚDO - NF,Mariele Kaczanoski,Interessado,Não,,Qualificado,41,PR,Sul,export 25/11/2026
+2026-11-23,2026-11-23,Mista,MISTA | REMARKETING | CONTEÚDO,Julio Ramos,Descartado,Sim,SEM PERFIL,Desqualificado,99,MA,Nordeste,export 25/11/2026
+2026-11-23,2026-11-23,SC,SC | MIX ALTOS EXE + CIDADES PIB | CONTEÚDO - NF,Cindy Porto,Investigação,Não,,Qualificado,11,SP,Sudeste,export 25/11/2026
